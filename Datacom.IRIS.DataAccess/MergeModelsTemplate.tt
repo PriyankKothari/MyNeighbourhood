@@ -1,0 +1,63 @@
+﻿<#@ output extension=".Report.txt" #>
+<#@ assembly name="$(SolutionDir)Source\Datacom.IRIS.Common\bin\Debug\Datacom.IRIS.Common.dll" #>
+<#@ assembly name="$(SolutionDir)Library\T4Toolbox.10.0.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Datacom.IRIS.Common.Utils.EntityFramework.ModelMerging" #>
+<#@ import namespace="T4Toolbox" #>
+
+<#+
+//Add to calling class
+//Merge Models to produce merged schema file to process.
+//var template = new MergeModelsTemplate();
+//template.Render();
+public class MergeModelsTemplate : Template
+{
+	public override string TransformText()
+	{
+	   //TransformationContext.Transformation. method.
+       // this.Write("+====================+");
+       // this.Write("| Model Merge Report |");
+       // this.Write("+====================+");
+        //this.Write(Environment.NewLine);
+        //this.Write(DateTime.Now.ToString("ddd, dd MMM yyyy HH':'mm':'ss'.'fff 'GMT'"));
+        //this.Write(Environment.NewLine);
+        //this.Write("Running Report ...");
+        //this.Write(Environment.NewLine);
+        //RunMerge(Path.GetDirectoryName(Host.TemplateFile));
+        //this.Write(Environment.NewLine);
+        //this.Write(Environment.NewLine);
+        //return this.GenerationEnvironment.ToString();
+        //this.Write(Environment.NewLine);
+        //this.Write(Environment.NewLine);
+        //this.Write(DateTime.Now.ToString("ddd, dd MMM yyyy HH':'mm':'ss'.'fff 'GMT'"));
+        //this.Write(Environment.NewLine);
+        //this.Write("***   E N D   O F   R E P O R T   ***");   
+	    return this.GenerationEnvironment.ToString();                                       
+	}
+                      
+	public void RunMerge(string path)
+	{
+		this.Write("Path: " + path);
+		var models = ModelFinderService.Find(new[] { path });
+		this.Write(Environment.NewLine);
+		this.Write(Environment.NewLine);
+		this.Write("Models Found:");
+		this.Write(Environment.NewLine);
+		foreach (var model in models)
+		{
+			this.Write("   " + model.Name);
+			this.Write(Environment.NewLine);
+		}	
+		var mergeInfo = ModelMergerService.New(models).MergeModels(path);
+		this.Write(Environment.NewLine);
+		var mergeResult = mergeInfo.Result ? "Successful" : "Failed, " + mergeInfo.Message;
+		this.Write(string.Format("Merge Result: {0}", mergeResult));
+		this.Write(Environment.NewLine);
+		this.Write(string.Format("   Conceptual File: {0}", mergeInfo.ConceptualSchemaFilePath));
+		this.Write(Environment.NewLine);
+		this.Write(string.Format("    Datastore File: {0}", mergeInfo.DatastoreSchemaFilePath));
+		this.Write(Environment.NewLine);
+		this.Write(string.Format("      Mapping File: {0}", mergeInfo.MappingSchemaFilePath));
+	}                 
+}
+#>

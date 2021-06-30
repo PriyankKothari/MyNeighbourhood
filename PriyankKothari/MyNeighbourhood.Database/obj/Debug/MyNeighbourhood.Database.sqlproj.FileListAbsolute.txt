@@ -1,0 +1,6 @@
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\bin\Debug\MyNeighbourhood.Database.dacpac
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\obj\Debug\MyNeighbourhood.Database.sqlprojAssemblyReference.cache
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\obj\Debug\MyNeighbourhood.Database.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\obj\Debug\MyNeighbourhood.Database.pdb
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\bin\Debug\MyNeighbourhood.Database.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Database\bin\Debug\MyNeighbourhood.Database.pdb

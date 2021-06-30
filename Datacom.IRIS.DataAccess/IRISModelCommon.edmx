@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Domain.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActivityObjectRelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="RelatedIRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="ActivityObjectRelationshipTypeID" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="CurrentFrom" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CurrentTo" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ContactBulkLoadItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BatchGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsSuccess" Type="bit" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
+          <Property Name="ContactDetailsXML" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Error" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Inspection_Batch_Create">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="DateDue" Type="datetime2" Precision="7" />
+          <Property Name="MobileInspector" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="InspectionSent" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateProcessed" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="IRISObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectTypeID" Type="bigint" Nullable="false" />
+          <Property Name="SubClass1ID" Type="bigint" />
+          <Property Name="SubClass2ID" Type="bigint" />
+          <Property Name="SubClass3ID" Type="bigint" />
+          <Property Name="LinkID" Type="bigint" />
+          <Property Name="LinkDetails" Type="nvarchar" MaxLength="150" />
+          <Property Name="HasAdditionalDetails" Type="bit" Nullable="false" />
+          <Property Name="BusinessID" Type="nvarchar" MaxLength="40" />
+          <Property Name="EDRMSReference" Type="nvarchar" MaxLength="100" />
+          <Property Name="SecurityContextIRISObjectID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+          <Property Name="FINCustCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="FINProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsFINProjectCodeConfirmed" Type="bit" />
+          <Property Name="AllowMobileInspection" Type="bit" />
+          <Property Name="MobileInspectionStatus" Type="bigint" Nullable="false" />
+          <Property Name="MobileInspector" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnlineSelfServicesInstanceCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IRISObjectDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="NavigationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="QueryString" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="LastVisitedDttm" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="bigint" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LegalName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Field1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field4" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsSysAccount" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IRISDEV.dbo.WarningMessage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WarningMessage">
+          <Key>
+            <PropertyRef Name="IRISObjectID" />
+          </Key>
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="ActivityObjectRelationship_IRISObject">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ActivityObjectRelationship" Type="Self.ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityObjectRelationship_RelatedIRISObject">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ActivityObjectRelationship" Type="Self.ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="RelatedIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="0..1" />
+          <End Role="IRISObject1" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectDetail_IRISObject_IRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="IRISObjectDetail" Type="Self.IRISObjectDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObjectDetail">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NavigationHistory_IRISObject_IRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="NavigationHistory" Type="Self.NavigationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NavigationHistory">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NavigationHistory_User_UserID">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="NavigationHistory" Type="Self.NavigationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NavigationHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ContactBulkLoadItemDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchGuid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="ListActivityObjectRelationships" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActivityObjectRelationshipIDs" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ListLinkedObjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="IncludeExpiredLinks" Type="bit" Mode="In" />
+          <Parameter Name="SearchForObjectTypeIDsSummary" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IncludedObjectTypeCodes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExcludedObjectTypeCodes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IncludeRelationshipTypeCodes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExcludeRelationshipTypeCodes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SortColumn" Type="nvarchar" Mode="In" />
+          <Parameter Name="SortDirection" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ListReferenceDataCollectionParentValues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CollectionID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="ReIndexIRISObject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="IrisObjectId" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="DomainStoreContainer">
+          <EntitySet Name="ActivityObjectRelationship" EntityType="Self.ActivityObjectRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactBulkLoadItem" EntityType="Self.ContactBulkLoadItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspection_Batch_Create" EntityType="Self.Inspection_Batch_Create" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IRISObject" EntityType="Self.IRISObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IRISObjectDetail" EntityType="Self.IRISObjectDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NavigationHistory" EntityType="Self.NavigationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sequence" EntityType="Self.Sequence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="sec" store:Type="Tables" />
+          <EntitySet Name="WarningMessage" EntityType="Self.WarningMessage" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[WarningMessage].[IRISObjectID] AS [IRISObjectID], 
+[WarningMessage].[Message] AS [Message]
+FROM [dbo].[WarningMessage] AS [WarningMessage]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="ActivityObjectRelationship_IRISObject" Association="Self.ActivityObjectRelationship_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityObjectRelationship_RelatedIRISObject" Association="Self.ActivityObjectRelationship_RelatedIRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Self.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectDetail_IRISObject_IRISObjectID" Association="Self.FK_IRISObjectDetail_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObjectDetail" EntitySet="IRISObjectDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NavigationHistory_IRISObject_IRISObjectID" Association="Self.FK_NavigationHistory_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="NavigationHistory" EntitySet="NavigationHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NavigationHistory_User_UserID" Association="Self.FK_NavigationHistory_User_UserID">
+            <End Role="User" EntitySet="User" />
+            <End Role="NavigationHistory" EntitySet="NavigationHistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Domain" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="IRISContext" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="NavigationHistories" EntityType="Domain.NavigationHistory" />
+          <EntitySet Name="IRISObject" EntityType="Domain.IRISObject" />
+          <EntitySet Name="User" EntityType="Domain.User" />
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NavigationHistory_IRISObject_IRISObjectID" Association="Domain.FK_NavigationHistory_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="NavigationHistory" EntitySet="NavigationHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NavigationHistory_User_UserID" Association="Domain.FK_NavigationHistory_User_UserID">
+            <End Role="User" EntitySet="User" />
+            <End Role="NavigationHistory" EntitySet="NavigationHistories" />
+          </AssociationSet>
+          <EntitySet Name="Sequence" EntityType="Domain.Sequence" />
+          <EntitySet Name="WarningMessage" EntityType="Domain.WarningMessage" />
+          <EntitySet Name="IRISObjectDetails" EntityType="Domain.IRISObjectDetail" />
+          <AssociationSet Name="FK_IRISObjectDetail_IRISObject_IRISObjectID" Association="Domain.FK_IRISObjectDetail_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObjectDetail" EntitySet="IRISObjectDetails" />
+          </AssociationSet>
+          <FunctionImport Name="ListReferenceDataCollectionParentValues" ReturnType="Collection(Domain.ParentReferenceDataSummary)">
+          <Parameter Name="CollectionID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="ReIndexIRISObject">
+          <Parameter Name="IrisObjectId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="ListLinkedObjects" ReturnType="Collection(Domain.LinkedObjectDTO)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="IRISObjectID" Mode="In" Type="Int64" />
+            <Parameter Name="IncludeExpiredLinks" Mode="In" Type="Boolean" />
+            <Parameter Name="SearchForObjectTypeIDsSummary" Mode="In" Type="String" />
+            <Parameter Name="IncludedObjectTypeCodes" Mode="In" Type="String" />
+            <Parameter Name="ExcludedObjectTypeCodes" Mode="In" Type="String" />
+            <Parameter Name="IncludeRelationshipTypeCodes" Mode="In" Type="String" />
+            <Parameter Name="ExcludeRelationshipTypeCodes" Mode="In" Type="String" />
+            <Parameter Name="SortColumn" Mode="In" Type="String" />
+            <Parameter Name="SortDirection" Mode="In" Type="String" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ActivityObjectRelationship" EntityType="Domain.ActivityObjectRelationship" />
+          <AssociationSet Name="ActivityObjectRelationship_IRISObject" Association="Domain.ActivityObjectRelationship_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityObjectRelationship_RelatedIRISObject" Association="Domain.ActivityObjectRelationship_RelatedIRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <FunctionImport Name="ListActivityObjectRelationships" EntitySet="ActivityObjectRelationship" ReturnType="Collection(Domain.ActivityObjectRelationship)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ActivityObjectRelationshipIDs" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ContactBulkLoadItems" EntityType="Domain.ContactBulkLoadItem" />
+          <FunctionImport Name="ContactBulkLoadItemDelete">
+          <Parameter Name="BatchGuid" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="Inspection_Batch_Create" EntityType="Domain.Inspection_Batch_Create" />
+        </EntityContainer>
+        <EntityType Name="NavigationHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int64" Name="UserID" Nullable="false" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="String" Name="QueryString" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastVisitedDttm" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <NavigationProperty Name="IRISObject" Relationship="Domain.FK_NavigationHistory_IRISObject_IRISObjectID" FromRole="NavigationHistory" ToRole="IRISObject" />
+          <NavigationProperty Name="User" Relationship="Domain.FK_NavigationHistory_User_UserID" FromRole="NavigationHistory" ToRole="User" />
+        </EntityType>
+        <EntityType Name="IRISObject">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="ObjectTypeID" Nullable="false" />
+          <Property Type="Int64" Name="SubClass1ID" />
+          <Property Type="Int64" Name="SubClass2ID" />
+          <Property Type="Int64" Name="SubClass3ID" />
+          <Property Type="Int64" Name="LinkID" />
+          <Property Type="String" Name="LinkDetails" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BusinessID" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EDRMSReference" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="SecurityContextIRISObjectID" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Type="Boolean" Name="HasAdditionalDetails" Nullable="false" />
+          <NavigationProperty Name="IRISObjectDetails" Relationship="Domain.FK_IRISObjectDetail_IRISObject_IRISObjectID" FromRole="IRISObject" ToRole="IRISObjectDetail" />
+          <Property Type="String" Name="FINCustCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FINProjectCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsFINProjectCodeConfirmed" />
+          <Property Type="String" Name="OnlineSelfServicesInstanceCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllowMobileInspection" Type="Boolean" />
+          <Property Name="MobileInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileInspectionStatus" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LegalName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TimeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsSysAccount" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NavigationHistory_IRISObject_IRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.NavigationHistory" Role="NavigationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NavigationHistory">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NavigationHistory_User_UserID">
+          <End Type="Domain.User" Role="User" Multiplicity="1" />
+          <End Type="Domain.NavigationHistory" Role="NavigationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NavigationHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Value" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WarningMessage">
+          <Key>
+            <PropertyRef Name="IRISObjectID" />
+          </Key>
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IRISObjectDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <NavigationProperty Name="IRISObject" Relationship="Domain.FK_IRISObjectDetail_IRISObject_IRISObjectID" FromRole="IRISObjectDetail" ToRole="IRISObject" />
+        </EntityType>
+        <Association Name="FK_IRISObjectDetail_IRISObject_IRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.IRISObjectDetail" Role="IRISObjectDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObjectDetail">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ParentReferenceDataSummary">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="DisplayValue" Nullable="true" MaxLength="150" />
+	  <Property Type="String" Name="Ancestors" Nullable="true" />          
+          <Property Type="Int32" Name="ActiveChildrenCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="LinkedObjectDTO">
+          <Property Type="Int32" Name="TotalRecordCount" Nullable="true" />
+          <Property Type="Int64" Name="ActivityObjectRelationshipID" Nullable="false" />
+          <Property Type="Int64" Name="LinkedIRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="LinkID" Nullable="true" />
+          <Property Type="Boolean" Name="HasAdditionalDetails" Nullable="false" />
+          <Property Type="String" Name="IRISID" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="WarningMessage" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="LinkDetails" Nullable="true" MaxLength="353" />
+          <Property Type="String" Name="ObjectType" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="ObjectTypeCode" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Relationship" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CurrentFrom" Nullable="false" />
+          <Property Type="DateTime" Name="CurrentTo" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ActivityObjectRelationship">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="RelatedIRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="ActivityObjectRelationshipTypeID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CurrentFrom" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="CurrentTo" Precision="7" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="ActivityObjectRelationship_IRISObject">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ActivityObjectRelationship" Role="ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityObjectRelationship_RelatedIRISObject">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ActivityObjectRelationship" Role="ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="RelatedIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactBulkLoadItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Guid" Name="ItemGUID" Nullable="false" />
+          <Property Type="Guid" Name="BatchGUID" Nullable="false" />
+          <Property Type="Boolean" Name="IsSuccess" Nullable="false" />
+          <Property Type="String" Name="Error" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsProcessed" Nullable="false" />
+          <Property Type="String" Name="ContactDetailsXML" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Inspection_Batch_Create">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="IRISObjectID" Type="Int64" Nullable="false" />
+          <Property Name="DateDue" Type="DateTime" Precision="7" />
+          <Property Name="MobileInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModified" Type="DateTime" Precision="7" />
+          <Property Name="InspectionSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="DateProcessed" Type="DateTime" Precision="7" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="IRISContext">
+          <EntitySetMapping Name="NavigationHistories">
+            <EntityTypeMapping TypeName="Domain.NavigationHistory">
+              <MappingFragment StoreEntitySet="NavigationHistory">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastVisitedDttm" ColumnName="LastVisitedDttm" />
+                <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IRISObject">
+            <EntityTypeMapping TypeName="Domain.IRISObject">
+              <MappingFragment StoreEntitySet="IRISObject">
+                <ScalarProperty Name="MobileInspectionStatus" ColumnName="MobileInspectionStatus" />
+                <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+                <ScalarProperty Name="AllowMobileInspection" ColumnName="AllowMobileInspection" />
+                <ScalarProperty Name="OnlineSelfServicesInstanceCode" ColumnName="OnlineSelfServicesInstanceCode" />
+                <ScalarProperty Name="IsFINProjectCodeConfirmed" ColumnName="IsFINProjectCodeConfirmed" />
+                <ScalarProperty Name="FINProjectCode" ColumnName="FINProjectCode" />
+                <ScalarProperty Name="FINCustCode" ColumnName="FINCustCode" />
+                <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SecurityContextIRISObjectID" ColumnName="SecurityContextIRISObjectID" />
+                <ScalarProperty Name="EDRMSReference" ColumnName="EDRMSReference" />
+                <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+                <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="SubClass3ID" ColumnName="SubClass3ID" />
+                <ScalarProperty Name="SubClass2ID" ColumnName="SubClass2ID" />
+                <ScalarProperty Name="SubClass1ID" ColumnName="SubClass1ID" />
+                <ScalarProperty Name="ObjectTypeID" ColumnName="ObjectTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Domain.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsSysAccount" ColumnName="IsSysAccount" />
+                <ScalarProperty Name="TimeCode" ColumnName="TimeCode" />
+                <ScalarProperty Name="Field4" ColumnName="Field4" />
+                <ScalarProperty Name="Field3" ColumnName="Field3" />
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sequence">
+            <EntityTypeMapping TypeName="Domain.Sequence">
+              <MappingFragment StoreEntitySet="Sequence">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarningMessage">
+            <EntityTypeMapping TypeName="Domain.WarningMessage">
+              <MappingFragment StoreEntitySet="WarningMessage">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IRISObjectDetails">
+            <EntityTypeMapping TypeName="Domain.IRISObjectDetail">
+              <MappingFragment StoreEntitySet="IRISObjectDetail">
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ListReferenceDataCollectionParentValues" FunctionName="Domain.Store.ListReferenceDataCollectionParentValues">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Domain.ParentReferenceDataSummary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+		<ScalarProperty Name="Ancestors" ColumnName="Ancestors" />                
+                <ScalarProperty Name="ActiveChildrenCount" ColumnName="ActiveChildrenCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReIndexIRISObject" FunctionName="Domain.Store.ReIndexIRISObject" />
+          <FunctionImportMapping FunctionImportName="ListLinkedObjects" FunctionName="Domain.Store.ListLinkedObjects">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Domain.LinkedObjectDTO">	        
+                <ScalarProperty Name="TotalRecordCount" ColumnName="TotalRecordCount" />
+                <ScalarProperty Name="ActivityObjectRelationshipID" ColumnName="ActivityObjectRelationshipID" />
+                <ScalarProperty Name="LinkedIRISObjectID" ColumnName="LinkedIRISObjectID" />
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+                <ScalarProperty Name="IRISID" ColumnName="IRISID" />
+                <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+                <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="ObjectTypeCode" ColumnName="ObjectTypeCode" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="CurrentFrom" ColumnName="CurrentFrom" />
+                <ScalarProperty Name="CurrentTo" ColumnName="CurrentTo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ActivityObjectRelationship">
+            <EntityTypeMapping TypeName="Domain.ActivityObjectRelationship">
+              <MappingFragment StoreEntitySet="ActivityObjectRelationship">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CurrentTo" ColumnName="CurrentTo" />
+                <ScalarProperty Name="CurrentFrom" ColumnName="CurrentFrom" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActivityObjectRelationshipTypeID" ColumnName="ActivityObjectRelationshipTypeID" />
+                <ScalarProperty Name="RelatedIRISObjectID" ColumnName="RelatedIRISObjectID" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ListActivityObjectRelationships" FunctionName="Domain.Store.ListActivityObjectRelationships" />
+          <EntitySetMapping Name="ContactBulkLoadItems">
+            <EntityTypeMapping TypeName="Domain.ContactBulkLoadItem">
+              <MappingFragment StoreEntitySet="ContactBulkLoadItem">
+                <ScalarProperty Name="ContactDetailsXML" ColumnName="ContactDetailsXML" />
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+                <ScalarProperty Name="BatchGUID" ColumnName="BatchGUID" />
+                <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ContactBulkLoadItemDelete" FunctionName="Domain.Store.ContactBulkLoadItemDelete" />
+          <EntitySetMapping Name="Inspection_Batch_Create">
+            <EntityTypeMapping TypeName="Domain.Inspection_Batch_Create">
+              <MappingFragment StoreEntitySet="Inspection_Batch_Create">
+                <ScalarProperty Name="DateProcessed" ColumnName="DateProcessed" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="InspectionSent" ColumnName="InspectionSent" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+                <ScalarProperty Name="DateDue" ColumnName="DateDue" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="Model1" ZoomLevel="76">
+        <edmx:AssociationConnector Association="Domain.FK_Task_IRISObject">
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="12.028219401041666" />
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.510416666666666" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.677083333333334" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="14.75" PointY="32.353098958333334" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Address_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="29.5" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="24.145833333333332" PointY="12.437499999999998" />
+          <edmx:ConnectorPoint PointX="23.854166666666668" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.27669421223958" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.110027545572915" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="8.4996956380208335" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.NavigationHistory" Width="1.75" PointX="1.625" PointY="4.5" Height="3.1340950520833326" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Domain.IRISObject" Width="1.5" PointX="4.75" PointY="0.5" Height="4.8648079427083326" />
+        <edmx:EntityTypeShape EntityType="Domain.User" Width="1.5" PointX="1.25" PointY="0.5" Height="2.7494921875" />
+        <edmx:AssociationConnector Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <edmx:ConnectorPoint PointX="5.2819230769230767" PointY="0.5" />
+          <edmx:ConnectorPoint PointX="5.2819230769230767" PointY="0.25" />
+          <edmx:ConnectorPoint PointX="5.7284615384615378" PointY="0.25" />
+          <edmx:ConnectorPoint PointX="5.7284615384615378" PointY="0.5" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_NavigationHistory_IRISObject_IRISObjectID">
+          <edmx:ConnectorPoint PointX="4.75" PointY="5.0285546875" />
+          <edmx:ConnectorPoint PointX="3.375" PointY="5.0285546875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_NavigationHistory_User_UserID">
+          <edmx:ConnectorPoint PointX="2.1875" PointY="3.2494921875" />
+          <edmx:ConnectorPoint PointX="2.1875" PointY="4.5" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.Sequence" Width="1.5" PointX="12.125" PointY="0.5" Height="2.3648893229166656" />
+        <edmx:EntityTypeShape EntityType="Domain.WarningMessage" Width="2.125" PointX="12.25" PointY="7.5" Height="1.4033821614583335" />
+        <edmx:EntityTypeShape EntityType="Domain.IRISObjectDetail" Width="1.5" PointX="7" PointY="1.5" Height="2.941793619791667" />
+        <edmx:AssociationConnector Association="Domain.FK_IRISObjectDetail_IRISObject_IRISObjectID">
+          <edmx:ConnectorPoint PointX="6.25" PointY="2.9708968098958337" />
+          <edmx:ConnectorPoint PointX="7" PointY="2.9708968098958337" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.ActivityObjectRelationship" Width="1.5" PointX="7" PointY="5.25" Height="3.3263964843749996" />
+        <edmx:AssociationConnector Association="Domain.ActivityObjectRelationship_IRISObject">
+          <edmx:ConnectorPoint PointX="6.25" PointY="5.4035546875" />
+          <edmx:ConnectorPoint PointX="7" PointY="5.4035546875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.ActivityObjectRelationship_RelatedIRISObject">
+          <edmx:ConnectorPoint PointX="5.5" PointY="5.557109375" />
+          <edmx:ConnectorPoint PointX="5.5" PointY="7.0667534296875" />
+          <edmx:ConnectorPoint PointX="7" PointY="7.0667534296875" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.ContactBulkLoadItem" Width="2" PointX="10.375" PointY="3.375" Height="2.7494921874999996" />
+        <edmx:EntityTypeShape EntityType="Domain.Inspection_Batch_Create" Width="1.5" PointX="0.75" PointY="8.75" />
+        </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

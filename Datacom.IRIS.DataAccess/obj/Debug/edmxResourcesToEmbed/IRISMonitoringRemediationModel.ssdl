@@ -1,0 +1,1516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Domain.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActualEquipmentMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObservationID" Type="bigint" Nullable="false" />
+    <Property Name="TypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="UnitTypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="RemediationID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ActualLabour">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObservationID" Type="bigint" />
+    <Property Name="RemediationID" Type="bigint" />
+    <Property Name="OfficerID" Type="bigint" Nullable="false" />
+    <Property Name="Effort" Type="float" Nullable="false" />
+    <Property Name="TimeCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="IRISObject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObjectTypeID" Type="bigint" Nullable="false" />
+    <Property Name="SubClass1ID" Type="bigint" />
+    <Property Name="SubClass2ID" Type="bigint" />
+    <Property Name="SubClass3ID" Type="bigint" />
+    <Property Name="LinkID" Type="bigint" />
+    <Property Name="LinkDetails" Type="nvarchar" MaxLength="150" />
+    <Property Name="HasAdditionalDetails" Type="bit" Nullable="false" />
+    <Property Name="BusinessID" Type="nvarchar" MaxLength="40" />
+    <Property Name="EDRMSReference" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecurityContextIRISObjectID" Type="bigint" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="FINCustCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="FINProjectCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsFINProjectCodeConfirmed" Type="bit" />
+    <Property Name="AllowMobileInspection" Type="bit" />
+    <Property Name="MobileInspectionStatus" Type="bigint" Nullable="false" />
+    <Property Name="MobileInspector" Type="nvarchar" MaxLength="100" />
+    <Property Name="OnlineSelfServicesInstanceCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ManagementSite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OfficerResponsibleID" Type="bigint" />
+    <Property Name="HabitatTypeREFID" Type="bigint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="ReferenceDataValue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollectionID" Type="bigint" Nullable="false" />
+    <Property Name="ParentValueID" Type="bigint" />
+    <Property Name="WordingID" Type="bigint" />
+    <Property Name="Code" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DisplayValue" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="IsCurrent" Type="bit" Nullable="false" />
+    <Property Name="IsProtected" Type="bit" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RegimeActivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+    <Property Name="RegimeActivityScheduleID" Type="bigint" Nullable="false" />
+    <Property Name="MobileInspectionScheduling" Type="nvarchar" MaxLength="100" />
+    <Property Name="OfficerResponsibleID" Type="bigint" Nullable="false" />
+    <Property Name="LabourPositionREFID" Type="bigint" />
+    <Property Name="ActivityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsForEstimation" Type="bit" />
+    <Property Name="InstancesPerFY" Type="bigint" />
+    <Property Name="PreviousEstimationActivityID" Type="bigint" />
+    <Property Name="SurveyNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="LatestScheduledTargetFromDate" Type="date" />
+    <Property Name="TargetFromDate" Type="date" />
+    <Property Name="TargetToDate" Type="date" />
+    <Property Name="ActualFromDate" Type="date" />
+    <Property Name="ActualFromTime" Type="time" Precision="7" />
+    <Property Name="ActualFromTimeIsDaylightSavings" Type="bit" Nullable="false" />
+    <Property Name="ActualFromDateTimeNZST" Type="datetime2" Precision="7" />
+    <Property Name="ActualToDate" Type="date" />
+    <Property Name="ActualToTime" Type="time" Precision="7" />
+    <Property Name="ActualToTimeIsDaylightSavings" Type="bit" Nullable="false" />
+    <Property Name="ActualToDateTimeNZST" Type="datetime2" Precision="7" />
+    <Property Name="OtherScheduleDetails" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ActivityDetails" Type="nvarchar" MaxLength="1000" />
+    <Property Name="EstimatedEffortHours" Type="decimal" Precision="12" Scale="2" />
+    <Property Name="IsOccupierPresent" Type="bit" />
+    <Property Name="IsUnscheduledSamplesTaken" Type="bit" Nullable="false" />
+    <Property Name="IsIntermittentActivity" Type="bit" />
+    <Property Name="IntermittentNumberYears" Type="int" />
+    <Property Name="NextFinancialYearREFID" Type="bigint" />
+    <Property Name="FinancialYearREFID" Type="bigint" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Remediation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+    <Property Name="ManagementSiteID" Type="bigint" Nullable="false" />
+    <Property Name="RegimeActivityID" Type="bigint" />
+    <Property Name="Descriptions" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsActual" Type="bit" Nullable="false" />
+    <Property Name="ActionByREFID" Type="bigint" />
+    <Property Name="OfficerResponsibleID" Type="bigint" />
+    <Property Name="ContractorREFID" Type="bigint" />
+    <Property Name="StatusREFID" Type="bigint" />
+    <Property Name="PlannedFromDate" Type="date" />
+    <Property Name="PlannedToDate" Type="date" />
+    <Property Name="FromDate" Type="date" />
+    <Property Name="FromTime" Type="time" Precision="7" />
+    <Property Name="FromDateTimeIsDaylightSavings" Type="bit" Nullable="false" />
+    <Property Name="FromDateTimeNZST" Type="datetime2" Precision="7" />
+    <Property Name="ToDate" Type="date" />
+    <Property Name="ToTime" Type="time" Precision="7" />
+    <Property Name="ToDateTimeIsDaylightSavings" Type="bit" Nullable="false" />
+    <Property Name="ToDateTimeNZST" Type="datetime2" Precision="7" />
+    <Property Name="RainfallREFID" Type="bigint" />
+    <Property Name="WindDirectionREFID" Type="bigint" />
+    <Property Name="WindStrengthREFID" Type="bigint" />
+    <Property Name="CloudCoverREFID" Type="bigint" />
+    <Property Name="AirTemperatureREFID" Type="bigint" />
+    <Property Name="OtherWeatherComments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="FundingREFID" Type="bigint" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RemediationItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RemediationID" Type="bigint" Nullable="false" />
+    <Property Name="TypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="SubtypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RemediationPhysicalControl">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="SpeciesID" Type="bigint" Nullable="false" />
+    <Property Name="MethodREFID" Type="bigint" Nullable="false" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="QuantityUnitREFID" Type="bigint" />
+    <Property Name="Area" Type="float" />
+    <Property Name="AreaUnit" Type="nvarchar" MaxLength="4" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationPlanting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PurposeREFID" Type="bigint" Nullable="false" />
+    <Property Name="Coverage" Type="float" />
+    <Property Name="CoverageType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationPlantingSpecies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RemediationPlantingID" Type="bigint" Nullable="false" />
+    <Property Name="SpeciesREFID" Type="bigint" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="30" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationShooting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="DistanceTravelled" Type="float" />
+    <Property Name="DistanceUnit" Type="nvarchar" MaxLength="4" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationShootingPest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RemediationShootingID" Type="bigint" Nullable="false" />
+    <Property Name="PestREFID" Type="bigint" Nullable="false" />
+    <Property Name="Seen" Type="int" Nullable="false" />
+    <Property Name="Shot" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationSitePlan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SitePlanID" Type="bigint" Nullable="false" />
+    <Property Name="RemediationID" Type="bigint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RemediationStructureOther">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PurposeREFID" Type="bigint" Nullable="false" />
+    <Property Name="StructureOtherTypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="Size" Type="int" />
+    <Property Name="SizeType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationTrapping">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="TrapTypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="UnitNumber" Type="int" Nullable="false" />
+    <Property Name="Night" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationTrappingPest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RemediationTrappingID" Type="bigint" Nullable="false" />
+    <Property Name="CatchPestREFID" Type="bigint" Nullable="false" />
+    <Property Name="CatchQuantity" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationTreatment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TreatmentSpeciesID" Type="bigint" Nullable="false" />
+    <Property Name="SpeciesID" Type="bigint" Nullable="false" />
+    <Property Name="AgentREFID" Type="bigint" Nullable="false" />
+    <Property Name="AgentQuantity" Type="float" Nullable="false" />
+    <Property Name="AgentUnitREFID" Type="bigint" Nullable="false" />
+    <Property Name="AgentToxicity" Type="float" />
+    <Property Name="AgentToxicityUnitREFID" Type="bigint" />
+    <Property Name="ApplicationMethodREFID" Type="bigint" Nullable="false" />
+    <Property Name="ApplicationMethodQuantity" Type="float" />
+    <Property Name="ApplicationMethodUnitREFID" Type="bigint" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="RemediationTreatmentSpecies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="IsSpeciesLed" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="SitePlan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManagementSiteID" Type="bigint" Nullable="false" />
+    <Property Name="TypeREFID" Type="bigint" Nullable="false" />
+    <Property Name="ExternalSitePlanID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StatusREFID" Type="bigint" Nullable="false" />
+    <Property Name="OfficerResponsibleID" Type="bigint" Nullable="false" />
+    <Property Name="FromDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ToDate" Type="datetime2" Precision="7" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="MigrationSourceID" Type="bigint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ScientificName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsForMobile" Type="bit" Nullable="false" />
+    <Property Name="IsForOnlineService" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="LegalName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Field1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Field2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Field3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Field4" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsSysAccount" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastModified" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_ActualEquipmentMaterial_ReferenceDataValue_TypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="ActualEquipmentMaterial" Type="Self.ActualEquipmentMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActualEquipmentMaterial">
+        <PropertyRef Name="TypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActualEquipmentMaterial_ReferenceDataValue_UnitTypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="ActualEquipmentMaterial" Type="Self.ActualEquipmentMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActualEquipmentMaterial">
+        <PropertyRef Name="UnitTypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActualLabour_Remediation_RemediationID">
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="0..1" />
+    <End Role="ActualLabour" Type="Self.ActualLabour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remediation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActualLabour">
+        <PropertyRef Name="RemediationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActualLabour_User_OfficerID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ActualLabour" Type="Self.ActualLabour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActualLabour">
+        <PropertyRef Name="OfficerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="0..1" />
+    <End Role="IRISObject1" Type="Self.IRISObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IRISObject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IRISObject1">
+        <PropertyRef Name="SecurityContextIRISObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IRISObjectSubClass1_ReferenceDataValue">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IRISObject">
+        <PropertyRef Name="SubClass1ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IRISObjectSubClass2_ReferenceDataValue2">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IRISObject">
+        <PropertyRef Name="SubClass2ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IRISObjectSubClass3_ReferenceDataValue3">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IRISObject">
+        <PropertyRef Name="SubClass3ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IRISObjectTypeID_ReferenceDataValue">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IRISObject">
+        <PropertyRef Name="ObjectTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManagementSite_IRISObject">
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+    <End Role="ManagementSite" Type="Self.ManagementSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IRISObject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ManagementSite">
+        <PropertyRef Name="IRISObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManagementSite_ReferenceDataValue_HabitatTypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="ManagementSite" Type="Self.ManagementSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ManagementSite">
+        <PropertyRef Name="HabitatTypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ManagementSite_User_OfficerResponsibleID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ManagementSite" Type="Self.ManagementSite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ManagementSite">
+        <PropertyRef Name="OfficerResponsibleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReferenceDataValue_ReferenceDataValue">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="ReferenceDataValue1" Type="Self.ReferenceDataValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReferenceDataValue1">
+        <PropertyRef Name="ParentValueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_IRISObject_IRISObjectID">
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IRISObject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity">
+        <PropertyRef Name="IRISObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_ReferenceDataValue_FinancialYearREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity">
+        <PropertyRef Name="FinancialYearREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_ReferenceDataValue_LabourPositionREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity">
+        <PropertyRef Name="LabourPositionREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_ReferenceDataValue_NextFinancialYearREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity">
+        <PropertyRef Name="NextFinancialYearREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_RegimeActivity_PreviousEstimationActivityID">
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="0..1" />
+    <End Role="RegimeActivity1" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegimeActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity1">
+        <PropertyRef Name="PreviousEstimationActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegimeActivity_User_OfficerResponsibleID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegimeActivity">
+        <PropertyRef Name="OfficerResponsibleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_IRISObject_IRISObjectID">
+    <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IRISObject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="IRISObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ManagementSite_ManagementSiteID">
+    <End Role="ManagementSite" Type="Self.ManagementSite" Multiplicity="1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManagementSite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="ManagementSiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_ActionByREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="ActionByREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_AirTemperatureREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="AirTemperatureREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_CloudCoverREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="CloudCoverREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_ContractorREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="ContractorREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_FundingREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="FundingREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_RainfallREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="RainfallREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_StatusREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="StatusREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_WindDirectionREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="WindDirectionREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_ReferenceDataValue_WindStrengthREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="WindStrengthREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_RegimeActivity_RegimeActivityID">
+    <End Role="RegimeActivity" Type="Self.RegimeActivity" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegimeActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="RegimeActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remediation_User_OfficeResponsibleID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Remediation">
+        <PropertyRef Name="OfficerResponsibleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationItem_ReferenceDataValue_SubtypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationItem">
+        <PropertyRef Name="SubtypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationItem_ReferenceDataValue_TypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationItem">
+        <PropertyRef Name="TypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationItem_Remediation_RemediationID">
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="1" />
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remediation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationItem">
+        <PropertyRef Name="RemediationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPhysicalControl_ReferenceDataValue_MethodREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationPhysicalControl" Type="Self.RemediationPhysicalControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPhysicalControl">
+        <PropertyRef Name="MethodREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPhysicalControl_ReferenceDataValue_QuantityUnitREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RemediationPhysicalControl" Type="Self.RemediationPhysicalControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPhysicalControl">
+        <PropertyRef Name="QuantityUnitREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPhysicalControl_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationPhysicalControl" Type="Self.RemediationPhysicalControl" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPhysicalControl">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPhysicalControl_Species_SpeciesID">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="RemediationPhysicalControl" Type="Self.RemediationPhysicalControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPhysicalControl">
+        <PropertyRef Name="SpeciesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPlanting_ReferenceDataValue_PurposeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationPlanting" Type="Self.RemediationPlanting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPlanting">
+        <PropertyRef Name="PurposeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPlanting_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationPlanting" Type="Self.RemediationPlanting" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPlanting">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPlantingSpecies_ReferenceDataValue_SpeciesREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationPlantingSpecies" Type="Self.RemediationPlantingSpecies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPlantingSpecies">
+        <PropertyRef Name="SpeciesREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationPlantingSpecies_RemediationPlanting_RemediationPlantingID">
+    <End Role="RemediationPlanting" Type="Self.RemediationPlanting" Multiplicity="1" />
+    <End Role="RemediationPlantingSpecies" Type="Self.RemediationPlantingSpecies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationPlanting">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationPlantingSpecies">
+        <PropertyRef Name="RemediationPlantingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationShooting_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationShooting" Type="Self.RemediationShooting" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationShooting">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationShootingPest_ReferenceDataValue_PestREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationShootingPest" Type="Self.RemediationShootingPest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationShootingPest">
+        <PropertyRef Name="PestREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationShootingPest_RemediationShooting_RemediationShootingID">
+    <End Role="RemediationShooting" Type="Self.RemediationShooting" Multiplicity="1" />
+    <End Role="RemediationShootingPest" Type="Self.RemediationShootingPest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationShooting">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationShootingPest">
+        <PropertyRef Name="RemediationShootingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationSitePlan_Remediation_RemediationID">
+    <End Role="Remediation" Type="Self.Remediation" Multiplicity="1" />
+    <End Role="RemediationSitePlan" Type="Self.RemediationSitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Remediation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationSitePlan">
+        <PropertyRef Name="RemediationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationSitePlan_SitePlan_SitePlanID">
+    <End Role="SitePlan" Type="Self.SitePlan" Multiplicity="1" />
+    <End Role="RemediationSitePlan" Type="Self.RemediationSitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SitePlan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationSitePlan">
+        <PropertyRef Name="SitePlanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationStructureOther_ReferenceDataValue_PurposeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationStructureOther" Type="Self.RemediationStructureOther" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationStructureOther">
+        <PropertyRef Name="PurposeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationStructureOther_ReferenceDataValue_StructureOtherTypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationStructureOther" Type="Self.RemediationStructureOther" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationStructureOther">
+        <PropertyRef Name="StructureOtherTypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationStructureOther_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationStructureOther" Type="Self.RemediationStructureOther" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationStructureOther">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTrapping_ReferenceDataValue_TrapTypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationTrapping" Type="Self.RemediationTrapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTrapping">
+        <PropertyRef Name="TrapTypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTrapping_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationTrapping" Type="Self.RemediationTrapping" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTrapping">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTrappingPest_ReferenceDataValue_CatchPestREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationTrappingPest" Type="Self.RemediationTrappingPest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTrappingPest">
+        <PropertyRef Name="CatchPestREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTrappingPest_RemediationTrapping_RemediationTrappingID">
+    <End Role="RemediationTrapping" Type="Self.RemediationTrapping" Multiplicity="1" />
+    <End Role="RemediationTrappingPest" Type="Self.RemediationTrappingPest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationTrapping">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTrappingPest">
+        <PropertyRef Name="RemediationTrappingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_ReferenceDataValue_AgentREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="AgentREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_ReferenceDataValue_AgentToxicityUnitREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="AgentToxicityUnitREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_ReferenceDataValue_AgentUnitREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="AgentUnitREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="ApplicationMethodREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodUnitREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="ApplicationMethodUnitREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_RemediationTreatmentSpecies_TreatmentSpeciesID">
+    <End Role="RemediationTreatmentSpecies" Type="Self.RemediationTreatmentSpecies" Multiplicity="1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationTreatmentSpecies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="TreatmentSpeciesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatment_Species_SpeciesID">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="RemediationTreatment" Type="Self.RemediationTreatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatment">
+        <PropertyRef Name="SpeciesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RemediationTreatmentSpecies_RemediationItem_ID">
+    <End Role="RemediationItem" Type="Self.RemediationItem" Multiplicity="1" />
+    <End Role="RemediationTreatmentSpecies" Type="Self.RemediationTreatmentSpecies" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RemediationItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RemediationTreatmentSpecies">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SitePlan_ManagementSite_ManagementSiteID">
+    <End Role="ManagementSite" Type="Self.ManagementSite" Multiplicity="1" />
+    <End Role="SitePlan" Type="Self.SitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManagementSite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SitePlan">
+        <PropertyRef Name="ManagementSiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SitePlan_ReferenceDataValue_StatusREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="SitePlan" Type="Self.SitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SitePlan">
+        <PropertyRef Name="StatusREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SitePlan_ReferenceDataValue_TypeREFID">
+    <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+    <End Role="SitePlan" Type="Self.SitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReferenceDataValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SitePlan">
+        <PropertyRef Name="TypeREFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SitePlan_User_OfficerResponsibleID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SitePlan" Type="Self.SitePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SitePlan">
+        <PropertyRef Name="OfficerResponsibleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ListObservationRemediationSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DomainStoreContainer">
+    <EntitySet Name="ActualEquipmentMaterial" EntityType="Self.ActualEquipmentMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActualLabour" EntityType="Self.ActualLabour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IRISObject" EntityType="Self.IRISObject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ManagementSite" EntityType="Self.ManagementSite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReferenceDataValue" EntityType="Self.ReferenceDataValue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegimeActivity" EntityType="Self.RegimeActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Remediation" EntityType="Self.Remediation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationItem" EntityType="Self.RemediationItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationPhysicalControl" EntityType="Self.RemediationPhysicalControl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationPlanting" EntityType="Self.RemediationPlanting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationPlantingSpecies" EntityType="Self.RemediationPlantingSpecies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationShooting" EntityType="Self.RemediationShooting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationShootingPest" EntityType="Self.RemediationShootingPest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationSitePlan" EntityType="Self.RemediationSitePlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationStructureOther" EntityType="Self.RemediationStructureOther" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationTrapping" EntityType="Self.RemediationTrapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationTrappingPest" EntityType="Self.RemediationTrappingPest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationTreatment" EntityType="Self.RemediationTreatment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RemediationTreatmentSpecies" EntityType="Self.RemediationTreatmentSpecies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SitePlan" EntityType="Self.SitePlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="sec" store:Type="Tables" />
+    <AssociationSet Name="FK_ActualEquipmentMaterial_ReferenceDataValue_TypeREFID" Association="Self.FK_ActualEquipmentMaterial_ReferenceDataValue_TypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="ActualEquipmentMaterial" EntitySet="ActualEquipmentMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActualEquipmentMaterial_ReferenceDataValue_UnitTypeREFID" Association="Self.FK_ActualEquipmentMaterial_ReferenceDataValue_UnitTypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="ActualEquipmentMaterial" EntitySet="ActualEquipmentMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActualLabour_Remediation_RemediationID" Association="Self.FK_ActualLabour_Remediation_RemediationID">
+      <End Role="Remediation" EntitySet="Remediation" />
+      <End Role="ActualLabour" EntitySet="ActualLabour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActualLabour_User_OfficerID" Association="Self.FK_ActualLabour_User_OfficerID">
+      <End Role="User" EntitySet="User" />
+      <End Role="ActualLabour" EntitySet="ActualLabour" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Self.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+      <End Role="IRISObject" EntitySet="IRISObject" />
+      <End Role="IRISObject1" EntitySet="IRISObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IRISObjectSubClass1_ReferenceDataValue" Association="Self.FK_IRISObjectSubClass1_ReferenceDataValue">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="IRISObject" EntitySet="IRISObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IRISObjectSubClass2_ReferenceDataValue2" Association="Self.FK_IRISObjectSubClass2_ReferenceDataValue2">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="IRISObject" EntitySet="IRISObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IRISObjectSubClass3_ReferenceDataValue3" Association="Self.FK_IRISObjectSubClass3_ReferenceDataValue3">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="IRISObject" EntitySet="IRISObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IRISObjectTypeID_ReferenceDataValue" Association="Self.FK_IRISObjectTypeID_ReferenceDataValue">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="IRISObject" EntitySet="IRISObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManagementSite_IRISObject" Association="Self.FK_ManagementSite_IRISObject">
+      <End Role="IRISObject" EntitySet="IRISObject" />
+      <End Role="ManagementSite" EntitySet="ManagementSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManagementSite_ReferenceDataValue_HabitatTypeREFID" Association="Self.FK_ManagementSite_ReferenceDataValue_HabitatTypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="ManagementSite" EntitySet="ManagementSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManagementSite_User_OfficerResponsibleID" Association="Self.FK_ManagementSite_User_OfficerResponsibleID">
+      <End Role="User" EntitySet="User" />
+      <End Role="ManagementSite" EntitySet="ManagementSite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReferenceDataValue_ReferenceDataValue" Association="Self.FK_ReferenceDataValue_ReferenceDataValue">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="ReferenceDataValue1" EntitySet="ReferenceDataValue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_IRISObject_IRISObjectID" Association="Self.FK_RegimeActivity_IRISObject_IRISObjectID">
+      <End Role="IRISObject" EntitySet="IRISObject" />
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_ReferenceDataValue_FinancialYearREFID" Association="Self.FK_RegimeActivity_ReferenceDataValue_FinancialYearREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_ReferenceDataValue_LabourPositionREFID" Association="Self.FK_RegimeActivity_ReferenceDataValue_LabourPositionREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_ReferenceDataValue_NextFinancialYearREFID" Association="Self.FK_RegimeActivity_ReferenceDataValue_NextFinancialYearREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_RegimeActivity_PreviousEstimationActivityID" Association="Self.FK_RegimeActivity_RegimeActivity_PreviousEstimationActivityID">
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+      <End Role="RegimeActivity1" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegimeActivity_User_OfficerResponsibleID" Association="Self.FK_RegimeActivity_User_OfficerResponsibleID">
+      <End Role="User" EntitySet="User" />
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_IRISObject_IRISObjectID" Association="Self.FK_Remediation_IRISObject_IRISObjectID">
+      <End Role="IRISObject" EntitySet="IRISObject" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ManagementSite_ManagementSiteID" Association="Self.FK_Remediation_ManagementSite_ManagementSiteID">
+      <End Role="ManagementSite" EntitySet="ManagementSite" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_ActionByREFID" Association="Self.FK_Remediation_ReferenceDataValue_ActionByREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_AirTemperatureREFID" Association="Self.FK_Remediation_ReferenceDataValue_AirTemperatureREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_CloudCoverREFID" Association="Self.FK_Remediation_ReferenceDataValue_CloudCoverREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_ContractorREFID" Association="Self.FK_Remediation_ReferenceDataValue_ContractorREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_FundingREFID" Association="Self.FK_Remediation_ReferenceDataValue_FundingREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_RainfallREFID" Association="Self.FK_Remediation_ReferenceDataValue_RainfallREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_StatusREFID" Association="Self.FK_Remediation_ReferenceDataValue_StatusREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_WindDirectionREFID" Association="Self.FK_Remediation_ReferenceDataValue_WindDirectionREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_ReferenceDataValue_WindStrengthREFID" Association="Self.FK_Remediation_ReferenceDataValue_WindStrengthREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_RegimeActivity_RegimeActivityID" Association="Self.FK_Remediation_RegimeActivity_RegimeActivityID">
+      <End Role="RegimeActivity" EntitySet="RegimeActivity" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remediation_User_OfficeResponsibleID" Association="Self.FK_Remediation_User_OfficeResponsibleID">
+      <End Role="User" EntitySet="User" />
+      <End Role="Remediation" EntitySet="Remediation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationItem_ReferenceDataValue_SubtypeREFID" Association="Self.FK_RemediationItem_ReferenceDataValue_SubtypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationItem_ReferenceDataValue_TypeREFID" Association="Self.FK_RemediationItem_ReferenceDataValue_TypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationItem_Remediation_RemediationID" Association="Self.FK_RemediationItem_Remediation_RemediationID">
+      <End Role="Remediation" EntitySet="Remediation" />
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPhysicalControl_ReferenceDataValue_MethodREFID" Association="Self.FK_RemediationPhysicalControl_ReferenceDataValue_MethodREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationPhysicalControl" EntitySet="RemediationPhysicalControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPhysicalControl_ReferenceDataValue_QuantityUnitREFID" Association="Self.FK_RemediationPhysicalControl_ReferenceDataValue_QuantityUnitREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationPhysicalControl" EntitySet="RemediationPhysicalControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPhysicalControl_RemediationItem_ID" Association="Self.FK_RemediationPhysicalControl_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationPhysicalControl" EntitySet="RemediationPhysicalControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPhysicalControl_Species_SpeciesID" Association="Self.FK_RemediationPhysicalControl_Species_SpeciesID">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="RemediationPhysicalControl" EntitySet="RemediationPhysicalControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPlanting_ReferenceDataValue_PurposeREFID" Association="Self.FK_RemediationPlanting_ReferenceDataValue_PurposeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationPlanting" EntitySet="RemediationPlanting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPlanting_RemediationItem_ID" Association="Self.FK_RemediationPlanting_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationPlanting" EntitySet="RemediationPlanting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPlantingSpecies_ReferenceDataValue_SpeciesREFID" Association="Self.FK_RemediationPlantingSpecies_ReferenceDataValue_SpeciesREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationPlantingSpecies" EntitySet="RemediationPlantingSpecies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationPlantingSpecies_RemediationPlanting_RemediationPlantingID" Association="Self.FK_RemediationPlantingSpecies_RemediationPlanting_RemediationPlantingID">
+      <End Role="RemediationPlanting" EntitySet="RemediationPlanting" />
+      <End Role="RemediationPlantingSpecies" EntitySet="RemediationPlantingSpecies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationShooting_RemediationItem_ID" Association="Self.FK_RemediationShooting_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationShooting" EntitySet="RemediationShooting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationShootingPest_ReferenceDataValue_PestREFID" Association="Self.FK_RemediationShootingPest_ReferenceDataValue_PestREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationShootingPest" EntitySet="RemediationShootingPest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationShootingPest_RemediationShooting_RemediationShootingID" Association="Self.FK_RemediationShootingPest_RemediationShooting_RemediationShootingID">
+      <End Role="RemediationShooting" EntitySet="RemediationShooting" />
+      <End Role="RemediationShootingPest" EntitySet="RemediationShootingPest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationSitePlan_Remediation_RemediationID" Association="Self.FK_RemediationSitePlan_Remediation_RemediationID">
+      <End Role="Remediation" EntitySet="Remediation" />
+      <End Role="RemediationSitePlan" EntitySet="RemediationSitePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationSitePlan_SitePlan_SitePlanID" Association="Self.FK_RemediationSitePlan_SitePlan_SitePlanID">
+      <End Role="SitePlan" EntitySet="SitePlan" />
+      <End Role="RemediationSitePlan" EntitySet="RemediationSitePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationStructureOther_ReferenceDataValue_PurposeREFID" Association="Self.FK_RemediationStructureOther_ReferenceDataValue_PurposeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationStructureOther" EntitySet="RemediationStructureOther" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationStructureOther_ReferenceDataValue_StructureOtherTypeREFID" Association="Self.FK_RemediationStructureOther_ReferenceDataValue_StructureOtherTypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationStructureOther" EntitySet="RemediationStructureOther" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationStructureOther_RemediationItem_ID" Association="Self.FK_RemediationStructureOther_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationStructureOther" EntitySet="RemediationStructureOther" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTrapping_ReferenceDataValue_TrapTypeREFID" Association="Self.FK_RemediationTrapping_ReferenceDataValue_TrapTypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTrapping" EntitySet="RemediationTrapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTrapping_RemediationItem_ID" Association="Self.FK_RemediationTrapping_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationTrapping" EntitySet="RemediationTrapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTrappingPest_ReferenceDataValue_CatchPestREFID" Association="Self.FK_RemediationTrappingPest_ReferenceDataValue_CatchPestREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTrappingPest" EntitySet="RemediationTrappingPest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTrappingPest_RemediationTrapping_RemediationTrappingID" Association="Self.FK_RemediationTrappingPest_RemediationTrapping_RemediationTrappingID">
+      <End Role="RemediationTrapping" EntitySet="RemediationTrapping" />
+      <End Role="RemediationTrappingPest" EntitySet="RemediationTrappingPest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_ReferenceDataValue_AgentREFID" Association="Self.FK_RemediationTreatment_ReferenceDataValue_AgentREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_ReferenceDataValue_AgentToxicityUnitREFID" Association="Self.FK_RemediationTreatment_ReferenceDataValue_AgentToxicityUnitREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_ReferenceDataValue_AgentUnitREFID" Association="Self.FK_RemediationTreatment_ReferenceDataValue_AgentUnitREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodREFID" Association="Self.FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodUnitREFID" Association="Self.FK_RemediationTreatment_ReferenceDataValue_ApplicationMethodUnitREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_RemediationTreatmentSpecies_TreatmentSpeciesID" Association="Self.FK_RemediationTreatment_RemediationTreatmentSpecies_TreatmentSpeciesID">
+      <End Role="RemediationTreatmentSpecies" EntitySet="RemediationTreatmentSpecies" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatment_Species_SpeciesID" Association="Self.FK_RemediationTreatment_Species_SpeciesID">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="RemediationTreatment" EntitySet="RemediationTreatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RemediationTreatmentSpecies_RemediationItem_ID" Association="Self.FK_RemediationTreatmentSpecies_RemediationItem_ID">
+      <End Role="RemediationItem" EntitySet="RemediationItem" />
+      <End Role="RemediationTreatmentSpecies" EntitySet="RemediationTreatmentSpecies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SitePlan_ManagementSite_ManagementSiteID" Association="Self.FK_SitePlan_ManagementSite_ManagementSiteID">
+      <End Role="ManagementSite" EntitySet="ManagementSite" />
+      <End Role="SitePlan" EntitySet="SitePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SitePlan_ReferenceDataValue_StatusREFID" Association="Self.FK_SitePlan_ReferenceDataValue_StatusREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="SitePlan" EntitySet="SitePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SitePlan_ReferenceDataValue_TypeREFID" Association="Self.FK_SitePlan_ReferenceDataValue_TypeREFID">
+      <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+      <End Role="SitePlan" EntitySet="SitePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SitePlan_User_OfficerResponsibleID" Association="Self.FK_SitePlan_User_OfficerResponsibleID">
+      <End Role="User" EntitySet="User" />
+      <End Role="SitePlan" EntitySet="SitePlan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="IRISContext">
+    <EntitySetMapping Name="NavigationHistories">
+      <EntityTypeMapping TypeName="Domain.NavigationHistory">
+        <MappingFragment StoreEntitySet="NavigationHistory">
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastVisitedDttm" ColumnName="LastVisitedDttm" />
+          <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+          <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IRISObject">
+      <EntityTypeMapping TypeName="Domain.IRISObject">
+        <MappingFragment StoreEntitySet="IRISObject">
+          <ScalarProperty Name="MobileInspectionStatus" ColumnName="MobileInspectionStatus" />
+          <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+          <ScalarProperty Name="AllowMobileInspection" ColumnName="AllowMobileInspection" />
+          <ScalarProperty Name="OnlineSelfServicesInstanceCode" ColumnName="OnlineSelfServicesInstanceCode" />
+          <ScalarProperty Name="IsFINProjectCodeConfirmed" ColumnName="IsFINProjectCodeConfirmed" />
+          <ScalarProperty Name="FINProjectCode" ColumnName="FINProjectCode" />
+          <ScalarProperty Name="FINCustCode" ColumnName="FINCustCode" />
+          <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+          <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="SecurityContextIRISObjectID" ColumnName="SecurityContextIRISObjectID" />
+          <ScalarProperty Name="EDRMSReference" ColumnName="EDRMSReference" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+          <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+          <ScalarProperty Name="SubClass3ID" ColumnName="SubClass3ID" />
+          <ScalarProperty Name="SubClass2ID" ColumnName="SubClass2ID" />
+          <ScalarProperty Name="SubClass1ID" ColumnName="SubClass1ID" />
+          <ScalarProperty Name="ObjectTypeID" ColumnName="ObjectTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="Domain.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IsSysAccount" ColumnName="IsSysAccount" />
+          <ScalarProperty Name="TimeCode" ColumnName="TimeCode" />
+          <ScalarProperty Name="Field4" ColumnName="Field4" />
+          <ScalarProperty Name="Field3" ColumnName="Field3" />
+          <ScalarProperty Name="Field2" ColumnName="Field2" />
+          <ScalarProperty Name="Field1" ColumnName="Field1" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sequence">
+      <EntityTypeMapping TypeName="Domain.Sequence">
+        <MappingFragment StoreEntitySet="Sequence">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarningMessage">
+      <EntityTypeMapping TypeName="Domain.WarningMessage">
+        <MappingFragment StoreEntitySet="WarningMessage">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IRISObjectDetails">
+      <EntityTypeMapping TypeName="Domain.IRISObjectDetail">
+        <MappingFragment StoreEntitySet="IRISObjectDetail">
+          <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ListReferenceDataCollectionParentValues" FunctionName="Domain.Store.ListReferenceDataCollectionParentValues">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Domain.ParentReferenceDataSummary">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+          <ScalarProperty Name="Ancestors" ColumnName="Ancestors" />
+          <ScalarProperty Name="ActiveChildrenCount" ColumnName="ActiveChildrenCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReIndexIRISObject" FunctionName="Domain.Store.ReIndexIRISObject" />
+    <FunctionImportMapping FunctionImportName="ListLinkedObjects" FunctionName="Domain.Store.ListLinkedObjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Domain.LinkedObjectDTO">
+          <ScalarProperty Name="TotalRecordCount" ColumnName="TotalRecordCount" />
+          <ScalarProperty Name="ActivityObjectRelationshipID" ColumnName="ActivityObjectRelationshipID" />
+          <ScalarProperty Name="LinkedIRISObjectID" ColumnName="LinkedIRISObjectID" />
+          <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+          <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+          <ScalarProperty Name="IRISID" ColumnName="IRISID" />
+          <ScalarProperty Name="WarningMessage" ColumnName="WarningMessage" />
+          <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+          <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+          <ScalarProperty Name="ObjectTypeCode" ColumnName="ObjectTypeCode" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="CurrentFrom" ColumnName="CurrentFrom" />
+          <ScalarProperty Name="CurrentTo" ColumnName="CurrentTo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ActivityObjectRelationship">
+      <EntityTypeMapping TypeName="Domain.ActivityObjectRelationship">
+        <MappingFragment StoreEntitySet="ActivityObjectRelationship">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CurrentTo" ColumnName="CurrentTo" />
+          <ScalarProperty Name="CurrentFrom" ColumnName="CurrentFrom" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ActivityObjectRelationshipTypeID" ColumnName="ActivityObjectRelationshipTypeID" />
+          <ScalarProperty Name="RelatedIRISObjectID" ColumnName="RelatedIRISObjectID" />
+          <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ListActivityObjectRelationships" FunctionName="Domain.Store.ListActivityObjectRelationships" />
+    <EntitySetMapping Name="ContactBulkLoadItems">
+      <EntityTypeMapping TypeName="Domain.ContactBulkLoadItem">
+        <MappingFragment StoreEntitySet="ContactBulkLoadItem">
+          <ScalarProperty Name="ContactDetailsXML" ColumnName="ContactDetailsXML" />
+          <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="IsSuccess" ColumnName="IsSuccess" />
+          <ScalarProperty Name="BatchGUID" ColumnName="BatchGUID" />
+          <ScalarProperty Name="ItemGUID" ColumnName="ItemGUID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ContactBulkLoadItemDelete" FunctionName="Domain.Store.ContactBulkLoadItemDelete" />
+    <EntitySetMapping Name="Inspection_Batch_Create">
+      <EntityTypeMapping TypeName="Domain.Inspection_Batch_Create">
+        <MappingFragment StoreEntitySet="Inspection_Batch_Create">
+          <ScalarProperty Name="DateProcessed" ColumnName="DateProcessed" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InspectionSent" ColumnName="InspectionSent" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+          <ScalarProperty Name="DateDue" ColumnName="DateDue" />
+          <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

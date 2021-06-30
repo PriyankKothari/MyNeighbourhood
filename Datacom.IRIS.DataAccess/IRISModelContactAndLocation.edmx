@@ -1,0 +1,2229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Domain.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ContactGroupQuestionDefinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactGroupID" Type="bigint" Nullable="false" />
+          <Property Name="QuestionDefinitionID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="QuestionDefinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentQuestionId" Type="bigint" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SubTypeCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="QuestionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="200" />
+          <Property Name="RequiredIf" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="VisibleIf" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Col" Type="int" />
+          <Property Name="Row" Type="int" />
+          <Property Name="RowSpan" Type="int" Nullable="false" />
+          <Property Name="ColSpan" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SymbolName" Type="nvarchar(max)" />
+          <Property Name="TaskMappedFieldID" Type="bigint" />
+          <Property Name="IsMappedTaskOutcome" Type="bit" Nullable="false" />
+          <Property Name="SubText" Type="nvarchar(max)" />
+          <Property Name="TrueText" Type="nvarchar" MaxLength="200" />
+          <Property Name="FalseText" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaxLength" Type="int" />
+          <Property Name="MinLength" Type="int" />
+          <Property Name="Rows" Type="int" />
+          <Property Name="MinDate" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaxDate" Type="nvarchar" MaxLength="200" />
+          <Property Name="MaxAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MinAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DecimalPlaces" Type="int" />
+          <Property Name="OptionValues" Type="nvarchar(max)" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DefaultValue" Type="nvarchar(max)" />
+          <Property Name="IsSearchable" Type="bit" Nullable="false" />
+          <Property Name="IsAdvancedSearchable" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsReadOnly" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ActivityObjectRelationship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="RelatedIRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="ActivityObjectRelationshipTypeID" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="CurrentFrom" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CurrentTo" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="Review" Type="bit" Nullable="false" />
+          <Property Name="IsDuplicate" Type="bit" Nullable="false" />
+          <Property Name="ConfidentialReason" Type="nvarchar" MaxLength="1000" />
+          <Property Name="WarningComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PersonDateOfBirth" Type="datetime2" Precision="7" />
+          <Property Name="PersonGenderID" Type="bigint" />
+          <Property Name="PersonIsDeceased" Type="bit" />
+          <Property Name="OrganisationCompanyNumber" Type="bigint" />
+          <Property Name="OrganisationTypeID" Type="bigint" />
+          <Property Name="OrganisationStatusID" Type="bigint" />
+          <Property Name="HistoricID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="MergedToContactID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ContactGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TypeREFID" Type="bigint" />
+          <Property Name="OwnerID" Type="bigint" Nullable="false" />
+          <Property Name="StatusREFID" Type="bigint" Nullable="false" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ContactGroupMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="ContactID" Type="bigint" Nullable="false" />
+          <Property Name="ContactGroupID" Type="bigint" Nullable="false" />
+          <Property Name="ActivityObjectRelationshipID" Type="bigint" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ContactVerification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactID" Type="bigint" Nullable="false" />
+          <Property Name="VerificationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="VerifiedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="IRISObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectTypeID" Type="bigint" Nullable="false" />
+          <Property Name="SubClass1ID" Type="bigint" />
+          <Property Name="SubClass2ID" Type="bigint" />
+          <Property Name="SubClass3ID" Type="bigint" />
+          <Property Name="LinkID" Type="bigint" />
+          <Property Name="LinkDetails" Type="nvarchar" MaxLength="150" />
+          <Property Name="HasAdditionalDetails" Type="bit" Nullable="false" />
+          <Property Name="BusinessID" Type="nvarchar" MaxLength="40" />
+          <Property Name="EDRMSReference" Type="nvarchar" MaxLength="100" />
+          <Property Name="SecurityContextIRISObjectID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+          <Property Name="FINCustCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="FINProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsFINProjectCodeConfirmed" Type="bit" />
+          <Property Name="AllowMobileInspection" Type="bit" />
+          <Property Name="MobileInspectionStatus" Type="bigint" Nullable="false" />
+          <Property Name="MobileInspector" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnlineSelfServicesInstanceCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JFCAssociatedContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JFCContactID" Type="bigint" Nullable="false" />
+          <Property Name="AssociatedContactID" Type="bigint" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LookupStreet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LookupSuburb">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LookupTownCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ReferenceDataValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollectionID" Type="bigint" Nullable="false" />
+          <Property Name="ParentValueID" Type="bigint" />
+          <Property Name="WordingID" Type="bigint" />
+          <Property Name="Code" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DisplayValue" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="IsProtected" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LegalName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Field1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field4" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsSysAccount" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="ActivityObjectRelationship_IRISObject">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ActivityObjectRelationship" Type="Self.ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityObjectRelationship_RelatedIRISObject">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ActivityObjectRelationship" Type="Self.ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="RelatedIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_ContactVerification">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="ContactVerification" Type="Self.ContactVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactVerification">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_GenderReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="PersonGenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_IRISObject">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_OrgStatusReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="OrganisationStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_OrgTypeReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="OrganisationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_IRISObject_IRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_ReferenceDataValue_StatusREFID">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="StatusREFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_ReferenceDataValue_TypeREFID">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="TypeREFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_User_OwnerID">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID">
+          <End Role="ActivityObjectRelationship" Type="Self.ActivityObjectRelationship" Multiplicity="1" />
+          <End Role="ContactGroupMember" Type="Self.ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityObjectRelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ActivityObjectRelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_Contact_ContactID">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="ContactGroupMember" Type="Self.ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_ContactGroup_ContactGroupID">
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="1" />
+          <End Role="ContactGroupMember" Type="Self.ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ContactGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_IRISObject_IRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="ContactGroupMember" Type="Self.ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID">
+          <End Role="ContactGroup" Type="Self.ContactGroup" Multiplicity="1" />
+          <End Role="ContactGroupQuestionDefinition" Type="Self.ContactGroupQuestionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupQuestionDefinition">
+              <PropertyRef Name="ContactGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID">
+          <End Role="QuestionDefinition" Type="Self.QuestionDefinition" Multiplicity="1" />
+          <End Role="ContactGroupQuestionDefinition" Type="Self.ContactGroupQuestionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDefinition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupQuestionDefinition">
+              <PropertyRef Name="QuestionDefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="0..1" />
+          <End Role="IRISObject1" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass1_ReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass2_ReferenceDataValue2">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass3_ReferenceDataValue3">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectTypeID_ReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="1" />
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="ObjectTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFCAssociatedContact_Contact_AssociatedContactID">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="JFCAssociatedContact" Type="Self.JFCAssociatedContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JFCAssociatedContact">
+              <PropertyRef Name="AssociatedContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFCAssociatedContact_Contact_JFCContactID">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="JFCAssociatedContact" Type="Self.JFCAssociatedContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JFCAssociatedContact">
+              <PropertyRef Name="JFCContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--<Association Name="FK_QuestionDefinition_QuestionDefinition_ParentQuestionId">
+          <End Role="QuestionDefinition" Type="Self.QuestionDefinition" Multiplicity="0..1" />
+          <End Role="QuestionDefinition1" Type="Self.QuestionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDefinition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionDefinition1">
+              <PropertyRef Name="ParentQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>-->
+        <Association Name="FK_ReferenceDataValue_ReferenceDataValue">
+          <End Role="ReferenceDataValue" Type="Self.ReferenceDataValue" Multiplicity="0..1" />
+          <End Role="ReferenceDataValue1" Type="Self.ReferenceDataValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReferenceDataValue1">
+              <PropertyRef Name="ParentValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CalculateDateUsingCalendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="fromDate" Type="date" Mode="In" />
+          <Parameter Name="numDays" Type="int" Mode="In" />
+          <Parameter Name="workingDays" Type="bit" Mode="In" />
+          <Parameter Name="ignoreHold" Type="bit" Mode="In" />
+          <Parameter Name="resultDate" Type="date" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="DueDate" Type="datetime" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateElapsedWorkingDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="ElapsedWorkingDays" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateMilestoneAndMilestoneDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicationID" Type="bigint" Mode="In" />
+          <Parameter Name="Milestone" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="MilestoneDate" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetChangedContacts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ChangedSince" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PopulateLinkDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="AddSpatialResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AdvancedSearchApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ApplicationTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ApplicationPurposeID" Type="bigint" Mode="In" />
+          <Parameter Name="ActivityTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ActivitySubTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ApplicationStatusIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LodgedFrom" Type="date" Mode="In" />
+          <Parameter Name="LodgedTo" Type="date" Mode="In" />
+          <Parameter Name="OfficerResponsible" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="AdvancedSearchAuthorisation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AuthorisationTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ActivityTypeIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActivitySubTypeIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuthorisationStatusIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="CommencedFrom" Type="date" Mode="In" />
+          <Parameter Name="CommencedTo" Type="date" Mode="In" />
+          <Parameter Name="OfficerResponsible" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="AdvancedSearchContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contactID" Type="bigint" Mode="In" />
+          <Parameter Name="includeDuplicates" Type="bit" Mode="In" />
+          <Parameter Name="excludeDeceased" Type="bit" Mode="In" />
+          <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="lastName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="orgName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="orgCompanyNumber" Type="bigint" Mode="In" />
+          <Parameter Name="streetNumber" Type="int" Mode="In" />
+          <Parameter Name="streetAlpha" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="streetName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="suburb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="phoneNumber" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="towncityUrban" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="towncityDelivery" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deliveryServiceIdentifier" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="boxLobby" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="countryID" Type="bigint" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="AdvancedSearchLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CommonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="FeatureTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedFrom" Type="datetime2" Mode="In" />
+          <Parameter Name="CreatedTo" Type="datetime2" Mode="In" />
+          <Parameter Name="Restricted" Type="bit" Mode="In" />
+          <Parameter Name="RestrictedComments" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LegalDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="LocationGroupIRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="CreateSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchCriteria" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ScopeSubClass1ID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+          <Parameter Name="ErrorCode" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="DuplicateContactSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="firstName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="lastName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="organisationName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="emailAddress" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="websiteURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="phoneNumber" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deliveryServiceIdentifier" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deliveryBoxLobby" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deliveryTownCity" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="urbanStreetName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="urbanSuburb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="urbanTownCity" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasAddressLine1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasAddressLine2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasAddressLine3" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasAddressLine4" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasAddressLine5" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="overseasCountryREFID" Type="bigint" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="ReIndexObject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="objectID" Type="bigint" Mode="In" />
+          <Parameter Name="objectType" Type="nvarchar" Mode="In" />
+          <Parameter Name="OnlyRefreshIndexOlderThan" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="ReIndexSearchIndexSpatialID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="RunSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SearchResultsPageSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+          <Parameter Name="SortExpression" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageCount" Type="int" Mode="In" />
+          <Parameter Name="ExcludeObjectIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SearchCount" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="DomainStoreContainer">
+          <EntitySet Name="ContactGroupQuestionDefinition" EntityType="Self.ContactGroupQuestionDefinition" Schema="cdf" store:Type="Tables" />
+          <EntitySet Name="QuestionDefinition" EntityType="Self.QuestionDefinition" Schema="cdf" store:Type="Tables" />
+          <EntitySet Name="ActivityObjectRelationship" EntityType="Self.ActivityObjectRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactGroup" EntityType="Self.ContactGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactGroupMember" EntityType="Self.ContactGroupMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactVerification" EntityType="Self.ContactVerification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IRISObject" EntityType="Self.IRISObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JFCAssociatedContact" EntityType="Self.JFCAssociatedContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupStreet" EntityType="Self.LookupStreet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupSuburb" EntityType="Self.LookupSuburb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupTownCity" EntityType="Self.LookupTownCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReferenceDataValue" EntityType="Self.ReferenceDataValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="sec" store:Type="Tables" />
+          <AssociationSet Name="ActivityObjectRelationship_IRISObject" Association="Self.ActivityObjectRelationship_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityObjectRelationship_RelatedIRISObject" Association="Self.ActivityObjectRelationship_RelatedIRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_ContactVerification" Association="Self.FK_Contact_ContactVerification">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactVerification" EntitySet="ContactVerification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_GenderReferenceDataValue" Association="Self.FK_Contact_GenderReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_IRISObject" Association="Self.FK_Contact_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_OrgStatusReferenceDataValue" Association="Self.FK_Contact_OrgStatusReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_OrgTypeReferenceDataValue" Association="Self.FK_Contact_OrgTypeReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_IRISObject_IRISObjectID" Association="Self.FK_ContactGroup_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_ReferenceDataValue_StatusREFID" Association="Self.FK_ContactGroup_ReferenceDataValue_StatusREFID">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_ReferenceDataValue_TypeREFID" Association="Self.FK_ContactGroup_ReferenceDataValue_TypeREFID">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_User_OwnerID" Association="Self.FK_ContactGroup_User_OwnerID">
+            <End Role="User" EntitySet="User" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID" Association="Self.FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID">
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_Contact_ContactID" Association="Self.FK_ContactGroupMember_Contact_ContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_ContactGroup_ContactGroupID" Association="Self.FK_ContactGroupMember_ContactGroup_ContactGroupID">
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_IRISObject_IRISObjectID" Association="Self.FK_ContactGroupMember_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID" Association="Self.FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID">
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+            <End Role="ContactGroupQuestionDefinition" EntitySet="ContactGroupQuestionDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID" Association="Self.FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID">
+            <End Role="QuestionDefinition" EntitySet="QuestionDefinition" />
+            <End Role="ContactGroupQuestionDefinition" EntitySet="ContactGroupQuestionDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Self.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass1_ReferenceDataValue" Association="Self.FK_IRISObjectSubClass1_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass2_ReferenceDataValue2" Association="Self.FK_IRISObjectSubClass2_ReferenceDataValue2">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass3_ReferenceDataValue3" Association="Self.FK_IRISObjectSubClass3_ReferenceDataValue3">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectTypeID_ReferenceDataValue" Association="Self.FK_IRISObjectTypeID_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFCAssociatedContact_Contact_AssociatedContactID" Association="Self.FK_JFCAssociatedContact_Contact_AssociatedContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="JFCAssociatedContact" EntitySet="JFCAssociatedContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFCAssociatedContact_Contact_JFCContactID" Association="Self.FK_JFCAssociatedContact_Contact_JFCContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="JFCAssociatedContact" EntitySet="JFCAssociatedContact" />
+          </AssociationSet>
+          <!--<AssociationSet Name="FK_QuestionDefinition_QuestionDefinition_ParentQuestionId" Association="Self.FK_QuestionDefinition_QuestionDefinition_ParentQuestionId">
+            <End Role="QuestionDefinition" EntitySet="QuestionDefinition" />
+            <End Role="QuestionDefinition1" EntitySet="QuestionDefinition" />
+          </AssociationSet>-->
+          <AssociationSet Name="FK_ReferenceDataValue_ReferenceDataValue" Association="Self.FK_ReferenceDataValue_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ReferenceDataValue1" EntitySet="ReferenceDataValue" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Domain" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="IRISContext" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="LookupStreet" EntityType="Domain.LookupStreet" />
+          <EntitySet Name="LookupSuburb" EntityType="Domain.LookupSuburb" />
+          <EntitySet Name="LookupTownCity" EntityType="Domain.LookupTownCity" />
+          <FunctionImport Name="AdvancedSearchContact">
+            <Parameter Name="ScopeObjectTypeID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="IsSpatialSearch" Mode="In" Type="Boolean" />
+            <Parameter Name="SpatialIDs" Mode="In" Type="String" />
+            <Parameter Name="contactID" Mode="In" Type="Int64" />
+            <Parameter Name="includeDuplicates" Mode="In" Type="Boolean" />
+            <Parameter Name="excludeDeceased" Mode="In" Type="Boolean" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="orgName" Mode="In" Type="String" />
+            <Parameter Name="orgCompanyNumber" Mode="In" Type="Int64" />
+            <Parameter Name="streetNumber" Mode="In" Type="Int32" />
+            <Parameter Name="streetAlpha" Mode="In" Type="String" />
+            <Parameter Name="streetName" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="towncityUrban" Mode="In" Type="String" />
+            <Parameter Name="towncityDelivery" Mode="In" Type="String" />
+            <Parameter Name="deliveryServiceIdentifier" Mode="In" Type="String" />
+            <Parameter Name="boxLobby" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="countryID" Mode="In" Type="Int64" />
+            <Parameter Name="BasicSearchKeywords" Mode="In" Type="String" />
+            <Parameter Name="ContactOrganisationPersonName" Mode="In" Type="String" />
+            <Parameter Name="LinkedContactRelationshipTypeIDs" Mode="In" Type="String" />
+            <Parameter Name="CdfCriteria" Mode="In" Type="String" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="SearchHeaderID" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DuplicateContactSearch">
+            <Parameter Name="ScopeObjectTypeID" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="IsSpatialSearch" Mode="In" Type="Boolean" />
+            <Parameter Name="SpatialIDs" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="organisationName" Mode="In" Type="String" />
+            <Parameter Name="emailAddress" Mode="In" Type="String" />
+            <Parameter Name="websiteURL" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="deliveryServiceIdentifier" Mode="In" Type="String" />
+            <Parameter Name="deliveryBoxLobby" Mode="In" Type="String" />
+            <Parameter Name="deliveryTownCity" Mode="In" Type="String" />
+            <Parameter Name="urbanStreetName" Mode="In" Type="String" />
+            <Parameter Name="urbanSuburb" Mode="In" Type="String" />
+            <Parameter Name="urbanTownCity" Mode="In" Type="String" />
+            <Parameter Name="overseasAddressLine1" Mode="In" Type="String" />
+            <Parameter Name="overseasAddressLine2" Mode="In" Type="String" />
+            <Parameter Name="overseasAddressLine3" Mode="In" Type="String" />
+            <Parameter Name="overseasAddressLine4" Mode="In" Type="String" />
+            <Parameter Name="overseasAddressLine5" Mode="In" Type="String" />
+            <Parameter Name="overseasCountryREFID" Mode="In" Type="Int64" />
+            <Parameter Name="ErrorCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="SearchHeaderID" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="Contact" EntityType="Domain.Contact" />
+          <EntitySet Name="ContactGroup" EntityType="Domain.ContactGroup" />
+          <EntitySet Name="ContactGroupMember" EntityType="Domain.ContactGroupMember" />
+          <EntitySet Name="IRISObject" EntityType="Domain.IRISObject" />
+          <EntitySet Name="ReferenceDataValue" EntityType="Domain.ReferenceDataValue" />
+          <EntitySet Name="User" EntityType="Domain.User" />
+          <AssociationSet Name="FK_Contact_GenderReferenceDataValue" Association="Domain.FK_Contact_GenderReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_IRISObject" Association="Domain.FK_Contact_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_OrgStatusReferenceDataValue" Association="Domain.FK_Contact_OrgStatusReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_OrgTypeReferenceDataValue" Association="Domain.FK_Contact_OrgTypeReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_Contact_ContactID" Association="Domain.FK_ContactGroupMember_Contact_ContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_IRISObject_IRISObjectID" Association="Domain.FK_ContactGroup_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_ReferenceDataValue_StatusREFID" Association="Domain.FK_ContactGroup_ReferenceDataValue_StatusREFID">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_User_OwnerID" Association="Domain.FK_ContactGroup_User_OwnerID">
+            <End Role="User" EntitySet="User" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_ContactGroup_ContactGroupID" Association="Domain.FK_ContactGroupMember_ContactGroup_ContactGroupID">
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_IRISObject_IRISObjectID" Association="Domain.FK_ContactGroupMember_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass1_ReferenceDataValue" Association="Domain.FK_IRISObjectSubClass1_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass2_ReferenceDataValue2" Association="Domain.FK_IRISObjectSubClass2_ReferenceDataValue2">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectSubClass3_ReferenceDataValue3" Association="Domain.FK_IRISObjectSubClass3_ReferenceDataValue3">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObjectTypeID_ReferenceDataValue" Association="Domain.FK_IRISObjectTypeID_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="IRISObject" EntitySet="IRISObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceDataValue_ReferenceDataValue" Association="Domain.FK_ReferenceDataValue_ReferenceDataValue">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ReferenceDataValue1" EntitySet="ReferenceDataValue" />
+          </AssociationSet>
+          <EntitySet Name="ContactGroupQuestionDefinition" EntityType="Domain.ContactGroupQuestionDefinition" />
+          <EntitySet Name="QuestionDefinition" EntityType="Domain.QuestionDefinition" />
+          <AssociationSet Name="FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID" Association="Domain.FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID">
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+            <End Role="ContactGroupQuestionDefinition" EntitySet="ContactGroupQuestionDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID" Association="Domain.FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID">
+            <End Role="QuestionDefinition" EntitySet="QuestionDefinition" />
+            <End Role="ContactGroupQuestionDefinition" EntitySet="ContactGroupQuestionDefinition" />
+          </AssociationSet>
+          <EntitySet Name="ActivityObjectRelationship" EntityType="Domain.ActivityObjectRelationship" />
+          <AssociationSet Name="ActivityObjectRelationship_IRISObject" Association="Domain.ActivityObjectRelationship_IRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityObjectRelationship_RelatedIRISObject" Association="Domain.ActivityObjectRelationship_RelatedIRISObject">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID" Association="Domain.FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID">
+            <End Role="ActivityObjectRelationship" EntitySet="ActivityObjectRelationship" />
+            <End Role="ContactGroupMember" EntitySet="ContactGroupMember" />
+          </AssociationSet>
+          <FunctionImport Name="GetChangedContacts" ReturnType="Collection(Domain.GetChangedContacts_Result)">
+          <Parameter Name="ChangedSince" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+          <EntitySet Name="JFCAssociatedContacts" EntityType="Domain.JFCAssociatedContact" />
+          <AssociationSet Name="FK_JFCAssociatedContact_Contact_AssociatedContactID" Association="Domain.FK_JFCAssociatedContact_Contact_AssociatedContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="JFCAssociatedContact" EntitySet="JFCAssociatedContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JFCAssociatedContact_Contact_JFCContactID" Association="Domain.FK_JFCAssociatedContact_Contact_JFCContactID">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="JFCAssociatedContact" EntitySet="JFCAssociatedContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactGroup_ReferenceDataValue_TypeREFID" Association="Domain.FK_ContactGroup_ReferenceDataValue_TypeREFID">
+            <End Role="ReferenceDataValue" EntitySet="ReferenceDataValue" />
+            <End Role="ContactGroup" EntitySet="ContactGroup" />
+          </AssociationSet>
+          <EntitySet Name="ContactVerifications" EntityType="Domain.ContactVerification" />
+          <AssociationSet Name="FK_Contact_ContactVerification" Association="Domain.FK_Contact_ContactVerification">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactVerification" EntitySet="ContactVerifications" />
+          </AssociationSet>
+          <!--<AssociationSet Name="FK_QuestionDefinition_QuestionDefinition_ParentQuestionId" Association="Domain.FK_QuestionDefinition_QuestionDefinition_ParentQuestionId">
+            <End Role="QuestionDefinition" EntitySet="QuestionDefinition" />
+            <End Role="QuestionDefinition1" EntitySet="QuestionDefinition" />
+          </AssociationSet>-->
+          </EntityContainer>
+        <ComplexType Name="CreateSearch_Result">
+          <Property Type="Int32" Name="Column1" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="LookupStreet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LookupSuburb">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LookupTownCity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="Boolean" Name="Review" Nullable="false" />
+          <Property Type="Boolean" Name="IsDuplicate" Nullable="false" />
+          <Property Type="String" Name="ConfidentialReason" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WarningComments" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PersonDateOfBirth" Precision="7" />
+          <Property Type="Int64" Name="PersonGenderID" />
+          <Property Type="Boolean" Name="PersonIsDeceased" />
+          <Property Type="Int64" Name="OrganisationCompanyNumber" />
+          <Property Type="Int64" Name="OrganisationTypeID" />
+          <Property Type="Int64" Name="OrganisationStatusID" />
+          <Property Type="String" Name="HistoricID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <NavigationProperty Name="AssociatedContactsForJFC" Relationship="Domain.FK_JFCAssociatedContact_Contact_JFCContactID" FromRole="Contact" ToRole="JFCAssociatedContact" />
+          <Property Name="MergedToContactID" Type="Int64" />
+          <NavigationProperty Name="ContactVerifications" Relationship="Domain.FK_Contact_ContactVerification" FromRole="Contact" ToRole="ContactVerification" />
+        </EntityType>
+        <EntityType Name="ContactGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="OwnerID" Nullable="false" />
+          <Property Type="Int64" Name="StatusREFID" Nullable="false" />
+          <Property Type="String" Name="Purpose" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="IRISObject" Relationship="Domain.FK_ContactGroup_IRISObject_IRISObjectID" FromRole="ContactGroup" ToRole="IRISObject" />
+          <NavigationProperty Name="StatusREF" Relationship="Domain.FK_ContactGroup_ReferenceDataValue_StatusREFID" FromRole="ContactGroup" ToRole="ReferenceDataValue" />
+          <NavigationProperty Name="Owner" Relationship="Domain.FK_ContactGroup_User_OwnerID" FromRole="ContactGroup" ToRole="User" />
+          <NavigationProperty Name="ContactGroupMembers" Relationship="Domain.FK_ContactGroupMember_ContactGroup_ContactGroupID" FromRole="ContactGroup" ToRole="ContactGroupMember" />
+          <NavigationProperty Name="ContactGroupQuestionDefinitions" Relationship="Domain.FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID" FromRole="ContactGroup" ToRole="ContactGroupQuestionDefinition" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Type="Int64" Name="TypeREFID" />
+          <NavigationProperty Name="TypeREF" Relationship="Domain.FK_ContactGroup_ReferenceDataValue_TypeREFID" FromRole="ContactGroup" ToRole="ReferenceDataValue" />
+        </EntityType>
+        <EntityType Name="ContactGroupMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="ContactID" Nullable="false" />
+          <Property Type="Int64" Name="ContactGroupID" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <NavigationProperty Name="Contact" Relationship="Domain.FK_ContactGroupMember_Contact_ContactID" FromRole="ContactGroupMember" ToRole="Contact" />
+          <NavigationProperty Name="ContactGroup" Relationship="Domain.FK_ContactGroupMember_ContactGroup_ContactGroupID" FromRole="ContactGroupMember" ToRole="ContactGroup" />
+          <NavigationProperty Name="IRISObject" Relationship="Domain.FK_ContactGroupMember_IRISObject_IRISObjectID" FromRole="ContactGroupMember" ToRole="IRISObject" />
+          <Property Type="Int64" Name="ActivityObjectRelationshipID" Nullable="false" />
+          <NavigationProperty Name="ActivityObjectRelationship" Relationship="Domain.FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID" FromRole="ContactGroupMember" ToRole="ActivityObjectRelationship" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+        </EntityType>
+        <EntityType Name="IRISObject">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="BusinessID" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="LinkID" />
+          <Property Type="String" Name="EDRMSReference" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ObjectTypeID" Nullable="false" />
+          <Property Type="Int64" Name="SubClass1ID" />
+          <Property Type="Int64" Name="SubClass2ID" />
+          <Property Type="Int64" Name="SubClass3ID" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LinkDetails" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Type="Int64" Name="SecurityContextIRISObjectID" />
+          <Property Type="Boolean" Name="HasAdditionalDetails" Nullable="false" />
+          <Property Type="String" Name="FINCustCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FINProjectCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsFINProjectCodeConfirmed" />
+          <Property Type="String" Name="OnlineSelfServicesInstanceCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllowMobileInspection" Type="Boolean" />
+          <Property Name="MobileInspectionStatus" Type="Int64" Nullable="false" />
+          <Property Name="MobileInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          </EntityType>
+        <EntityType Name="ReferenceDataValue">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="CollectionID" Nullable="false" />
+          <Property Type="Int64" Name="ParentValueID" />
+          <Property Type="String" Name="Code" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="String" Name="DisplayValue" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <Property Type="Boolean" Name="IsCurrent" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsProtected" Nullable="false" />
+          <Property Name="WordingID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="User">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LegalName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsSysAccount" Type="Boolean" Nullable="false" />
+          <Property Name="TimeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Contact_GenderReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="PersonGenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_IRISObject">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_OrgStatusReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="OrganisationStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_OrgTypeReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="OrganisationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_Contact_ContactID">
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="Domain.ContactGroupMember" Role="ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_IRISObject_IRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_ReferenceDataValue_StatusREFID">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="1" />
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="StatusREFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_User_OwnerID">
+          <End Type="Domain.User" Role="User" Multiplicity="1" />
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_ContactGroup_ContactGroupID">
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="1" />
+          <End Type="Domain.ContactGroupMember" Role="ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ContactGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_IRISObject_IRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ContactGroupMember" Role="ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass1_ReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass2_ReferenceDataValue2">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectSubClass3_ReferenceDataValue3">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="SubClass3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObjectTypeID_ReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="1" />
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject">
+              <PropertyRef Name="ObjectTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceDataValue_ReferenceDataValue">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReferenceDataValue1">
+              <PropertyRef Name="ParentValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactGroupQuestionDefinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="ContactGroupID" Nullable="false" />
+          <Property Type="Int64" Name="QuestionDefinitionID" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <NavigationProperty Name="ContactGroup" Relationship="Domain.FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID" FromRole="ContactGroupQuestionDefinition" ToRole="ContactGroup" />
+          <NavigationProperty Name="QuestionDefinition" Relationship="Domain.FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID" FromRole="ContactGroupQuestionDefinition" ToRole="QuestionDefinition" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+        </EntityType>
+        <EntityType Name="QuestionDefinition">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="ParentQuestionId" />
+          <Property Type="String" Name="TypeCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubTypeCode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QuestionName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RequiredIf" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VisibleIf" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Col" />
+          <Property Type="Int32" Name="Row" />
+          <Property Type="Int32" Name="RowSpan" Nullable="false" />
+          <Property Type="Int32" Name="ColSpan" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TrueText" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FalseText" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MaxLength" />
+          <Property Type="Int32" Name="MinLength" />
+          <Property Type="Int32" Name="Rows" />
+          <Property Type="String" Name="MinDate" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MaxDate" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MaxAmount" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MinAmount" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="DecimalPlaces" />
+          <Property Type="String" Name="OptionValues" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="OrderNumber" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DefaultValue" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsSearchable" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Name="SymbolName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdvancedSearchable" Type="Boolean" Nullable="false" />
+          <Property Name="TaskMappedFieldID" Type="Int64" />
+          <Property Name="IsMappedTaskOutcome" Type="Boolean" Nullable="false" />
+          <!--<NavigationProperty Name="QuestionDefinition1" Relationship="Domain.FK_QuestionDefinition_QuestionDefinition_ParentQuestionId" FromRole="QuestionDefinition" ToRole="QuestionDefinition1" />
+          <NavigationProperty Name="QuestionDefinition2" Relationship="Domain.FK_QuestionDefinition_QuestionDefinition_ParentQuestionId" FromRole="QuestionDefinition1" ToRole="QuestionDefinition" />-->
+        </EntityType>
+        <Association Name="FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID">
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="1" />
+          <End Type="Domain.ContactGroupQuestionDefinition" Role="ContactGroupQuestionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupQuestionDefinition">
+              <PropertyRef Name="ContactGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID">
+          <End Type="Domain.QuestionDefinition" Role="QuestionDefinition" Multiplicity="1" />
+          <End Type="Domain.ContactGroupQuestionDefinition" Role="ContactGroupQuestionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDefinition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupQuestionDefinition">
+              <PropertyRef Name="QuestionDefinitionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ActivityObjectRelationship">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="RelatedIRISObjectID" Nullable="false" />
+          <Property Type="Int64" Name="ActivityObjectRelationshipTypeID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CurrentFrom" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="CurrentTo" Precision="7" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="ActivityObjectRelationship_IRISObject">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ActivityObjectRelationship" Role="ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityObjectRelationship_RelatedIRISObject">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.ActivityObjectRelationship" Role="ActivityObjectRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityObjectRelationship">
+              <PropertyRef Name="RelatedIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID">
+          <End Type="Domain.ActivityObjectRelationship" Role="ActivityObjectRelationship" Multiplicity="1" />
+          <End Type="Domain.ContactGroupMember" Role="ContactGroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityObjectRelationship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroupMember">
+              <PropertyRef Name="ActivityObjectRelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetChangedContacts_Result">
+          <Property Type="Int64" Name="ContactID" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JFCAssociatedContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="JFCContactID" Nullable="false" />
+          <Property Type="Int64" Name="AssociatedContactID" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="Int64" Name="MigrationSourceID" />
+          <NavigationProperty Name="AssociatedContact" Relationship="Domain.FK_JFCAssociatedContact_Contact_AssociatedContactID" FromRole="JFCAssociatedContact" ToRole="Contact" />
+          <NavigationProperty Name="JointFinancialCustomer" Relationship="Domain.FK_JFCAssociatedContact_Contact_JFCContactID" FromRole="JFCAssociatedContact" ToRole="Contact" />
+        </EntityType>
+        <Association Name="FK_JFCAssociatedContact_Contact_AssociatedContactID">
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="Domain.JFCAssociatedContact" Role="JFCAssociatedContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JFCAssociatedContact">
+              <PropertyRef Name="AssociatedContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JFCAssociatedContact_Contact_JFCContactID">
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="Domain.JFCAssociatedContact" Role="JFCAssociatedContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JFCAssociatedContact">
+              <PropertyRef Name="JFCContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactGroup_ReferenceDataValue_TypeREFID">
+          <End Type="Domain.ReferenceDataValue" Role="ReferenceDataValue" Multiplicity="0..1" />
+          <End Type="Domain.ContactGroup" Role="ContactGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceDataValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactGroup">
+              <PropertyRef Name="TypeREFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContactVerification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="ContactID" Type="Int64" Nullable="false" />
+          <Property Name="VerificationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="VerifiedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="MigrationSourceID" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModified" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contact" Relationship="Domain.FK_Contact_ContactVerification" FromRole="ContactVerification" ToRole="Contact" />
+        </EntityType>
+        <Association Name="FK_Contact_ContactVerification">
+          <End Type="Domain.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="Domain.ContactVerification" Role="ContactVerification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactVerification">
+              <PropertyRef Name="ContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--<Association Name="FK_QuestionDefinition_QuestionDefinition_ParentQuestionId">
+          <End Type="Domain.QuestionDefinition" Role="QuestionDefinition" Multiplicity="0..1" />
+          <End Type="Domain.QuestionDefinition" Role="QuestionDefinition1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDefinition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuestionDefinition1">
+              <PropertyRef Name="ParentQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>-->
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="IRISContext">
+          <EntitySetMapping Name="LookupStreet">
+            <EntityTypeMapping TypeName="Domain.LookupStreet">
+              <MappingFragment StoreEntitySet="LookupStreet">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupSuburb">
+            <EntityTypeMapping TypeName="Domain.LookupSuburb">
+              <MappingFragment StoreEntitySet="LookupSuburb">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupTownCity">
+            <EntityTypeMapping TypeName="Domain.LookupTownCity">
+              <MappingFragment StoreEntitySet="LookupTownCity">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AdvancedSearchContact" FunctionName="Domain.Store.AdvancedSearchContact" />
+          <FunctionImportMapping FunctionImportName="DuplicateContactSearch" FunctionName="Domain.Store.DuplicateContactSearch" />
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="Domain.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="MergedToContactID" ColumnName="MergedToContactID" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="HistoricID" ColumnName="HistoricID" />
+                <ScalarProperty Name="OrganisationStatusID" ColumnName="OrganisationStatusID" />
+                <ScalarProperty Name="OrganisationTypeID" ColumnName="OrganisationTypeID" />
+                <ScalarProperty Name="OrganisationCompanyNumber" ColumnName="OrganisationCompanyNumber" />
+                <ScalarProperty Name="PersonIsDeceased" ColumnName="PersonIsDeceased" />
+                <ScalarProperty Name="PersonGenderID" ColumnName="PersonGenderID" />
+                <ScalarProperty Name="PersonDateOfBirth" ColumnName="PersonDateOfBirth" />
+                <ScalarProperty Name="WarningComments" ColumnName="WarningComments" />
+                <ScalarProperty Name="ConfidentialReason" ColumnName="ConfidentialReason" />
+                <ScalarProperty Name="IsDuplicate" ColumnName="IsDuplicate" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <Condition ColumnName="IsDeleted" Value="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroup">
+            <EntityTypeMapping TypeName="Domain.ContactGroup">
+              <MappingFragment StoreEntitySet="ContactGroup">
+                <ScalarProperty Name="TypeREFID" ColumnName="TypeREFID" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="StatusREFID" ColumnName="StatusREFID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroupMember">
+            <EntityTypeMapping TypeName="Domain.ContactGroupMember">
+              <MappingFragment StoreEntitySet="ContactGroupMember">
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ActivityObjectRelationshipID" ColumnName="ActivityObjectRelationshipID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ContactGroupID" ColumnName="ContactGroupID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <Condition ColumnName="IsDeleted" Value="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IRISObject">
+            <EntityTypeMapping TypeName="Domain.IRISObject">
+              <MappingFragment StoreEntitySet="IRISObject">
+                <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+                <ScalarProperty Name="MobileInspectionStatus" ColumnName="MobileInspectionStatus" />
+                <ScalarProperty Name="AllowMobileInspection" ColumnName="AllowMobileInspection" />
+                <ScalarProperty Name="OnlineSelfServicesInstanceCode" ColumnName="OnlineSelfServicesInstanceCode" />
+                <ScalarProperty Name="IsFINProjectCodeConfirmed" ColumnName="IsFINProjectCodeConfirmed" />
+                <ScalarProperty Name="FINProjectCode" ColumnName="FINProjectCode" />
+                <ScalarProperty Name="FINCustCode" ColumnName="FINCustCode" />
+                <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+                <ScalarProperty Name="SecurityContextIRISObjectID" ColumnName="SecurityContextIRISObjectID" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SubClass3ID" ColumnName="SubClass3ID" />
+                <ScalarProperty Name="SubClass2ID" ColumnName="SubClass2ID" />
+                <ScalarProperty Name="SubClass1ID" ColumnName="SubClass1ID" />
+                <ScalarProperty Name="ObjectTypeID" ColumnName="ObjectTypeID" />
+                <ScalarProperty Name="EDRMSReference" ColumnName="EDRMSReference" />
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReferenceDataValue">
+            <EntityTypeMapping TypeName="Domain.ReferenceDataValue">
+              <MappingFragment StoreEntitySet="ReferenceDataValue">
+                <ScalarProperty Name="WordingID" ColumnName="WordingID" />
+                <ScalarProperty Name="IsProtected" ColumnName="IsProtected" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentValueID" ColumnName="ParentValueID" />
+                <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Domain.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TimeCode" ColumnName="TimeCode" />
+                <ScalarProperty Name="IsSysAccount" ColumnName="IsSysAccount" />
+                <ScalarProperty Name="Field4" ColumnName="Field4" />
+                <ScalarProperty Name="Field3" ColumnName="Field3" />
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroupQuestionDefinition">
+            <EntityTypeMapping TypeName="Domain.ContactGroupQuestionDefinition">
+              <MappingFragment StoreEntitySet="ContactGroupQuestionDefinition">
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="QuestionDefinitionID" ColumnName="QuestionDefinitionID" />
+                <ScalarProperty Name="ContactGroupID" ColumnName="ContactGroupID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionDefinition">
+            <EntityTypeMapping TypeName="Domain.QuestionDefinition">
+              <MappingFragment StoreEntitySet="QuestionDefinition">
+                <ScalarProperty Name="IsMappedTaskOutcome" ColumnName="IsMappedTaskOutcome" />
+                <ScalarProperty Name="TaskMappedFieldID" ColumnName="TaskMappedFieldID" />
+                <ScalarProperty Name="IsAdvancedSearchable" ColumnName="IsAdvancedSearchable" />
+                <ScalarProperty Name="SymbolName" ColumnName="SymbolName" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsSearchable" ColumnName="IsSearchable" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OptionValues" ColumnName="OptionValues" />
+                <ScalarProperty Name="DecimalPlaces" ColumnName="DecimalPlaces" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+                <ScalarProperty Name="MaxDate" ColumnName="MaxDate" />
+                <ScalarProperty Name="MinDate" ColumnName="MinDate" />
+                <ScalarProperty Name="Rows" ColumnName="Rows" />
+                <ScalarProperty Name="MinLength" ColumnName="MinLength" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="FalseText" ColumnName="FalseText" />
+                <ScalarProperty Name="TrueText" ColumnName="TrueText" />
+                <ScalarProperty Name="SubText" ColumnName="SubText" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ColSpan" ColumnName="ColSpan" />
+                <ScalarProperty Name="RowSpan" ColumnName="RowSpan" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="Col" ColumnName="Col" />
+                <ScalarProperty Name="VisibleIf" ColumnName="VisibleIf" />
+                <ScalarProperty Name="RequiredIf" ColumnName="RequiredIf" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
+                <ScalarProperty Name="SubTypeCode" ColumnName="SubTypeCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="ParentQuestionId" ColumnName="ParentQuestionId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityObjectRelationship">
+            <EntityTypeMapping TypeName="Domain.ActivityObjectRelationship">
+              <MappingFragment StoreEntitySet="ActivityObjectRelationship">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CurrentTo" ColumnName="CurrentTo" />
+                <ScalarProperty Name="CurrentFrom" ColumnName="CurrentFrom" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActivityObjectRelationshipTypeID" ColumnName="ActivityObjectRelationshipTypeID" />
+                <ScalarProperty Name="RelatedIRISObjectID" ColumnName="RelatedIRISObjectID" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetChangedContacts" FunctionName="Domain.Store.GetChangedContacts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Domain.GetChangedContacts_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="JFCAssociatedContacts">
+            <EntityTypeMapping TypeName="Domain.JFCAssociatedContact">
+              <MappingFragment StoreEntitySet="JFCAssociatedContact">
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="AssociatedContactID" ColumnName="AssociatedContactID" />
+                <ScalarProperty Name="JFCContactID" ColumnName="JFCContactID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactVerifications">
+            <EntityTypeMapping TypeName="Domain.ContactVerification">
+              <MappingFragment StoreEntitySet="ContactVerification">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
+                <ScalarProperty Name="VerificationDate" ColumnName="VerificationDate" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="Model1" ZoomLevel="80">
+        <edmx:AssociationConnector Association="Domain.FK_Task_IRISObject">
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="12.028219401041666" />
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.510416666666666" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.677083333333334" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="14.75" PointY="32.353098958333334" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Address_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="29.5" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="24.145833333333332" PointY="12.437499999999998" />
+          <edmx:ConnectorPoint PointX="23.854166666666668" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.27669421223958" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.110027545572915" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="8.4996956380208335" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.LookupStreet" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" />
+        <edmx:EntityTypeShape EntityType="Domain.LookupSuburb" Width="1.5" PointX="2.75" PointY="0.75" Height="2.3648893229166665" />
+        <edmx:EntityTypeShape EntityType="Domain.LookupTownCity" Width="1.75" PointX="4.75" PointY="0.75" Height="2.3648893229166656" />
+        <edmx:EntityTypeShape EntityType="Domain.Contact" Width="1.5" PointX="6" PointY="8.875" Height="4.0575162760416656" />
+        <edmx:EntityTypeShape EntityType="Domain.ContactGroup" Width="1.5" PointX="9" PointY="9.875" Height="4.2879036458333335" />
+        <edmx:EntityTypeShape EntityType="Domain.ContactGroupMember" Width="1.5" PointX="11.25" PointY="12.75" Height="3.1340950520833317" />
+        <edmx:EntityTypeShape EntityType="Domain.IRISObject" Width="1.5" PointX="3.75" PointY="14.5" Height="4.6725065104166674" />
+        <edmx:EntityTypeShape EntityType="Domain.ReferenceDataValue" Width="2.5" PointX="1.5" PointY="3.625" Height="3.3263964843749996" />
+        <edmx:EntityTypeShape EntityType="Domain.User" Width="1.5" PointX="6.75" PointY="4.25" Height="2.7494921874999996" />
+        <edmx:AssociationConnector Association="Domain.FK_Contact_GenderReferenceDataValue">
+          <edmx:ConnectorPoint PointX="2.0038426508378375" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.0038426508378375" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="2.1110690059246981" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="2.2777356725913651" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="2.5047074910312932" PointY="11.422205021822363" />
+          <edmx:ConnectorPoint PointX="2.9476406438588474" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="4.2135404166666666" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="4.3802070833333326" PointY="11.422205021822364" />
+          <edmx:ConnectorPoint PointX="6" PointY="11.422205021822364" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Contact_IRISObject">
+          <edmx:ConnectorPoint PointX="4.29687375" PointY="14.5" />
+          <edmx:ConnectorPoint PointX="4.29687375" PointY="9.5696973512438444" />
+          <edmx:ConnectorPoint PointX="6" PointY="9.5696973512438444" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Contact_OrgStatusReferenceDataValue">
+          <edmx:ConnectorPoint PointX="1.6624187278016236" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="1.6624187278016236" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="1.7497973559863975" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="1.916464022653064" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="2.1110690059246981" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="2.2777356725913651" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="2.5047074910312932" PointY="12.516108266119515" />
+          <edmx:ConnectorPoint PointX="2.9476406438588474" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="4.2135404166666666" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="4.3802070833333326" PointY="12.516108266119517" />
+          <edmx:ConnectorPoint PointX="6" PointY="12.516108266119517" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Contact_OrgTypeReferenceDataValue">
+          <edmx:ConnectorPoint PointX="2.3849620276782257" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.3849620276782257" PointY="10.495951186533105" />
+          <edmx:ConnectorPoint PointX="2.5047074910312932" PointY="10.495951186533103" />
+          <edmx:ConnectorPoint PointX="2.9476406438588474" PointY="10.495951186533105" />
+          <edmx:ConnectorPoint PointX="4.2135404166666666" PointY="10.495951186533105" />
+          <edmx:ConnectorPoint PointX="4.3802070833333326" PointY="10.495951186533105" />
+          <edmx:ConnectorPoint PointX="6" PointY="10.495951186533105" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupMember_Contact_ContactID">
+          <edmx:ConnectorPoint PointX="6.3707122082519536" PointY="13.547506510416666" />
+          <edmx:ConnectorPoint PointX="6.3707122082519536" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="6.6623788749186206" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="6.8290455415852866" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="8.5729166666666661" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="8.5729166666666661" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="8.7395833333333339" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="8.7395833333333339" PointY="15.149298609977915" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="15.149298609977915" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroup_IRISObject_IRISObjectID">
+          <edmx:ConnectorPoint PointX="4.804689375" PointY="14.5" />
+          <edmx:ConnectorPoint PointX="4.804689375" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="6.2873788749186206" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="6.4540455415852866" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="6.6623788749186206" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="6.8290455415852866" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="14.182319565925223" />
+          <edmx:ConnectorPoint PointX="9" PointY="14.182319565925223" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroup_ReferenceDataValue_StatusREFID">
+          <edmx:ConnectorPoint PointX="2.8643073105255139" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.8643073105255139" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="4.2135404166666666" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="4.3802070833333326" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="6.2873788749186206" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="6.4540455415852866" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="6.6623788749186206" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="6.8290455415852866" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="7.822916666666667" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="7.989583333333333" PointY="13.737091017342083" />
+          <edmx:ConnectorPoint PointX="9" PointY="13.737091017342083" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroup_User_OwnerID">
+          <edmx:ConnectorPoint PointX="7.90625" PointY="6.9994921875" />
+          <edmx:ConnectorPoint PointX="7.90625" PointY="13.959705291633654" />
+          <edmx:ConnectorPoint PointX="9" PointY="13.959705291633654" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupMember_ContactGroup_ContactGroupID">
+          <edmx:ConnectorPoint PointX="10.5" PointY="13.5526025390625" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="13.5526025390625" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupMember_IRISObject_IRISObjectID">
+          <edmx:ConnectorPoint PointX="5.25" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="6.6623788749186206" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="6.8290455415852866" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="8.5729166666666661" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="8.7395833333333339" PointY="15.867648979468125" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="15.867648979468125" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_IRISObjectSubClass1_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="2.1944023392580316" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.1944023392580316" PointY="17.299551409453439" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="17.299551409453439" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_IRISObjectSubClass2_ReferenceDataValue2">
+          <edmx:ConnectorPoint PointX="2.5880408243646267" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.5880408243646267" PointY="16.330928614614358" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="16.330928614614358" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_IRISObjectSubClass3_ReferenceDataValue3">
+          <edmx:ConnectorPoint PointX="1.8331306893197308" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="1.8331306893197308" PointY="18.363432176080892" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="18.363432176080892" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_IRISObjectTypeID_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="2.7261740674450703" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="2.7261740674450703" PointY="15.384211807307178" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="15.384211807307178" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ReferenceDataValue_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="2.0319230769230767" PointY="3.625" />
+          <edmx:ConnectorPoint PointX="2.0319230769230767" PointY="3.375" />
+          <edmx:ConnectorPoint PointX="2.4784615384615383" PointY="3.375" />
+          <edmx:ConnectorPoint PointX="2.4784615384615383" PointY="3.625" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.ContactGroupQuestionDefinition" Width="1.5" PointX="11.25" PointY="8.5" Height="2.7494921875000031" />
+        <edmx:EntityTypeShape EntityType="Domain.QuestionDefinition" Width="1.5" PointX="9" PointY="0.875" Height="7.7493294270833335" />
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupQuestionDefinition_ContactGroup_ContactGroupID">
+          <edmx:ConnectorPoint PointX="10.5" PointY="10.658396809895834" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="10.658396809895834" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupQuestionDefinition_QuestionDefinition_QuestionDefinitionID">
+          <edmx:ConnectorPoint PointX="10.5" PointY="8.6583154296875" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="8.6583154296875" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.ActivityObjectRelationship" Width="2.375" PointX="8.375" PointY="17.5" Height="3.3263964843750031" />
+        <edmx:AssociationConnector Association="Domain.ActivityObjectRelationship_IRISObject">
+          <edmx:ConnectorPoint PointX="5.25" PointY="18.399297569870981" />
+          <edmx:ConnectorPoint PointX="6.6580910831705733" PointY="18.399297569870981" />
+          <edmx:ConnectorPoint PointX="6.8247577498372394" PointY="18.399297569870981" />
+          <edmx:ConnectorPoint PointX="7.0643435831705732" PointY="18.399297569870981" />
+          <edmx:ConnectorPoint PointX="7.2310102498372393" PointY="18.399297569870981" />
+          <edmx:ConnectorPoint PointX="8.375" PointY="18.399297569870981" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.ActivityObjectRelationship_RelatedIRISObject">
+          <edmx:ConnectorPoint PointX="5.25" PointY="17.887148784935491" />
+          <edmx:ConnectorPoint PointX="6.6580910831705733" PointY="17.887148784935491" />
+          <edmx:ConnectorPoint PointX="6.8247577498372394" PointY="17.887148784935491" />
+          <edmx:ConnectorPoint PointX="7.0643435831705732" PointY="17.887148784935491" />
+          <edmx:ConnectorPoint PointX="7.2310102498372393" PointY="17.887148784935491" />
+          <edmx:ConnectorPoint PointX="8.375" PointY="17.887148784935491" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroupMember_ActivityObjectRelationship_ActivityObjectRelationshipID">
+          <edmx:ConnectorPoint PointX="8.65625" PointY="17.5" />
+          <edmx:ConnectorPoint PointX="8.65625" PointY="14.656098627905623" />
+          <edmx:ConnectorPoint PointX="11.25" PointY="14.656098627905623" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <edmx:ConnectorPoint PointX="4.2819230769230767" PointY="19.172506510416667" />
+          <edmx:ConnectorPoint PointX="4.2819230769230767" PointY="19.422506510416667" />
+          <edmx:ConnectorPoint PointX="4.7284615384615378" PointY="19.422506510416667" />
+          <edmx:ConnectorPoint PointX="4.7284615384615378" PointY="19.172506510416667" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.JFCAssociatedContact" Width="1.5" PointX="8.25" PointY="21.875" Height="3.1340950520833388" />
+        <edmx:AssociationConnector Association="Domain.FK_JFCAssociatedContact_Contact_AssociatedContactID">
+          <edmx:ConnectorPoint PointX="7.1207122082519536" PointY="13.547506510416666" />
+          <edmx:ConnectorPoint PointX="7.1207122082519536" PointY="23.926194473459869" />
+          <edmx:ConnectorPoint PointX="8.25" PointY="23.926194473459869" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_JFCAssociatedContact_Contact_JFCContactID">
+          <edmx:ConnectorPoint PointX="6.7457122082519536" PointY="13.547506510416666" />
+          <edmx:ConnectorPoint PointX="6.7457122082519536" PointY="22.869344736729943" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="22.869344736729943" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="22.869344736729943" />
+          <edmx:ConnectorPoint PointX="8.25" PointY="22.869344736729943" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_ContactGroup_ReferenceDataValue_TypeREFID">
+          <edmx:ConnectorPoint PointX="1.5499568639008117" PointY="7.3359993489583317" />
+          <edmx:ConnectorPoint PointX="1.5499568639008117" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="1.7497973559863975" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="1.916464022653064" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="2.1110690059246981" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="2.2777356725913651" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="2.5047074910312932" PointY="14.30001482202511" />
+          <edmx:ConnectorPoint PointX="2.8095074007784038" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="4.2135404166666666" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="4.3802070833333326" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="4.7213560416666667" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="4.8880227083333327" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="6.2873788749186206" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="6.4540455415852866" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="6.6623788749186206" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="6.8290455415852866" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="7.0373788749186206" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="7.2040455415852866" PointY="14.300014822025112" />
+          <edmx:ConnectorPoint PointX="9" PointY="14.300014822025112" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.ContactVerification" Width="1.5" PointX="8.25" PointY="25.875" />
+        <edmx:AssociationConnector Association="Domain.FK_Contact_ContactVerification" />
+        <edmx:AssociationConnector Association="Domain.FK_QuestionDefinition_QuestionDefinition_ParentQuestionId" />
+        </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

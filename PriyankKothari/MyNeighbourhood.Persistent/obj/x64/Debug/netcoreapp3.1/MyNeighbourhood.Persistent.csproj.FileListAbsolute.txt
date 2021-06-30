@@ -1,0 +1,14 @@
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.deps.json
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.pdb
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Domain.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.pdb
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Domain.pdb
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.csprojAssemblyReference.cache
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.AssemblyInfoInputs.cache
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.AssemblyInfo.cs
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.csproj.CoreCompileInputs.cache
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.csproj.CopyComplete
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.dll
+C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Persistent\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Persistent.pdb

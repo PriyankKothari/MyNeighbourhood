@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Domain.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdHocData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IRISObjectID" Type="bigint" Nullable="false" />
+          <Property Name="DatasetName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DatasetDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DatasetLocation" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="OfficerResponsibleID" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndDate" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="IRISObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectTypeID" Type="bigint" Nullable="false" />
+          <Property Name="SubClass1ID" Type="bigint" />
+          <Property Name="SubClass2ID" Type="bigint" />
+          <Property Name="SubClass3ID" Type="bigint" />
+          <Property Name="LinkID" Type="bigint" />
+          <Property Name="LinkDetails" Type="nvarchar" MaxLength="150" />
+          <Property Name="HasAdditionalDetails" Type="bit" Nullable="false" />
+          <Property Name="BusinessID" Type="nvarchar" MaxLength="40" />
+          <Property Name="EDRMSReference" Type="nvarchar" MaxLength="100" />
+          <Property Name="SecurityContextIRISObjectID" Type="bigint" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MigrationSourceID" Type="bigint" />
+          <Property Name="FINCustCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="FINProjectCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsFINProjectCodeConfirmed" Type="bit" />
+          <Property Name="AllowMobileInspection" Type="bit" />
+          <Property Name="MobileInspectionStatus" Type="bigint" Nullable="false" />
+          <Property Name="MobileInspector" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnlineSelfServicesInstanceCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LegalName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Field1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Field4" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsSysAccount" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastModified" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_AdHocData_IRISObject_IRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="1" />
+          <End Role="AdHocData" Type="Self.AdHocData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdHocData">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdHocData_User_OfficerResponsibleID">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AdHocData" Type="Self.AdHocData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdHocData">
+              <PropertyRef Name="OfficerResponsibleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Role="IRISObject" Type="Self.IRISObject" Multiplicity="0..1" />
+          <End Role="IRISObject1" Type="Self.IRISObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CalculateDateUsingCalendar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="fromDate" Type="date" Mode="In" />
+          <Parameter Name="numDays" Type="int" Mode="In" />
+          <Parameter Name="workingDays" Type="bit" Mode="In" />
+          <Parameter Name="ignoreHold" Type="bit" Mode="In" />
+          <Parameter Name="resultDate" Type="date" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateDueDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="DueDate" Type="datetime" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateElapsedWorkingDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="ElapsedWorkingDays" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="CalculateMilestoneAndMilestoneDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicationID" Type="bigint" Mode="In" />
+          <Parameter Name="Milestone" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="MilestoneDate" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="PopulateLinkDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="AddSpatialResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AdvancedSearchApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ApplicationTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ApplicationPurposeID" Type="bigint" Mode="In" />
+          <Parameter Name="ActivityTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ActivitySubTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ApplicationStatusIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LodgedFrom" Type="date" Mode="In" />
+          <Parameter Name="LodgedTo" Type="date" Mode="In" />
+          <Parameter Name="OfficerResponsible" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="AdvancedSearchAuthorisation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AuthorisationTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ActivityTypeIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActivitySubTypeIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuthorisationStatusIDs" Type="nvarchar" Mode="In" />
+          <Parameter Name="CommencedFrom" Type="date" Mode="In" />
+          <Parameter Name="CommencedTo" Type="date" Mode="In" />
+          <Parameter Name="OfficerResponsible" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="AdvancedSearchLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SpatialIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CommonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="FeatureTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedFrom" Type="datetime2" Mode="In" />
+          <Parameter Name="CreatedTo" Type="datetime2" Mode="In" />
+          <Parameter Name="Restricted" Type="bit" Mode="In" />
+          <Parameter Name="RestrictedComments" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LegalDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="LocationGroupIRISObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="BasicSearchKeywords" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ContactOrganisationPersonName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LinkedContactRelationshipTypeIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CdfCriteria" Type="xml" Mode="In" />
+          <Parameter Name="ErrorCode" Type="int" Mode="InOut" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="CreateSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchCriteria" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ScopeObjectTypeID" Type="bigint" Mode="In" />
+          <Parameter Name="ScopeSubClass1ID" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="IsSpatialSearch" Type="bit" Mode="In" />
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="InOut" />
+          <Parameter Name="ErrorCode" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="ReIndexObject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="objectID" Type="bigint" Mode="In" />
+          <Parameter Name="objectType" Type="nvarchar" Mode="In" />
+          <Parameter Name="OnlyRefreshIndexOlderThan" Type="datetime2" Mode="In" />
+        </Function>
+        <Function Name="ReIndexSearchIndexSpatialID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="IRISObjectID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="RunSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SearchResultsPageSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="search">
+          <Parameter Name="SearchHeaderID" Type="bigint" Mode="In" />
+          <Parameter Name="SortExpression" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="PageCount" Type="int" Mode="In" />
+          <Parameter Name="ExcludeObjectIDs" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SearchCount" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="DomainStoreContainer">
+          <EntitySet Name="AdHocData" EntityType="Self.AdHocData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IRISObject" EntityType="Self.IRISObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="sec" store:Type="Tables" />
+          <AssociationSet Name="FK_AdHocData_IRISObject_IRISObjectID" Association="Self.FK_AdHocData_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="AdHocData" EntitySet="AdHocData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdHocData_User_OfficerResponsibleID" Association="Self.FK_AdHocData_User_OfficerResponsibleID">
+            <End Role="User" EntitySet="User" />
+            <End Role="AdHocData" EntitySet="AdHocData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Self.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Domain" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="IRISContext" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="AdHocData" EntityType="Domain.AdHocData" />
+          <EntitySet Name="User" EntityType="Domain.User" />
+          <AssociationSet Name="FK_AdHocData_User_OfficerResponsibleID" Association="Domain.FK_AdHocData_User_OfficerResponsibleID">
+            <End Role="User" EntitySet="User" />
+            <End Role="AdHocData" EntitySet="AdHocData" />
+          </AssociationSet>
+          <EntitySet Name="IRISObject" EntityType="Domain.IRISObject" />
+          <AssociationSet Name="FK_AdHocData_IRISObject_IRISObjectID" Association="Domain.FK_AdHocData_IRISObject_IRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="AdHocData" EntitySet="AdHocData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID" Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+            <End Role="IRISObject" EntitySet="IRISObject" />
+            <End Role="IRISObject1" EntitySet="IRISObject" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="CreateSearch_Result">
+          <Property Type="Int32" Name="Column1" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="AdHocData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="IRISObjectID" Nullable="false" />
+          <Property Type="String" Name="DatasetName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DatasetDescription" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DatasetLocation" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="OfficerResponsibleID" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="EndDate" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" ConcurrencyMode="Fixed" Precision="7" />
+          <NavigationProperty Name="OfficerResponsible" Relationship="Domain.FK_AdHocData_User_OfficerResponsibleID" FromRole="AdHocData" ToRole="User" />
+          <NavigationProperty Name="IRISObject" Relationship="Domain.FK_AdHocData_IRISObject_IRISObjectID" FromRole="AdHocData" ToRole="IRISObject" />
+        </EntityType>
+        <EntityType Name="User">
+          <Documentation>
+            <LongDescription>ModelLink</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LegalName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModified" Precision="7" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Field4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TimeCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsSysAccount" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdHocData_User_OfficerResponsibleID">
+          <End Type="Domain.User" Role="User" Multiplicity="1" />
+          <End Type="Domain.AdHocData" Role="AdHocData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdHocData">
+              <PropertyRef Name="OfficerResponsibleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IRISObject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="ObjectTypeID" Type="Int64" Nullable="false" />
+          <Property Name="SubClass1ID" Type="Int64" />
+          <Property Name="SubClass2ID" Type="Int64" />
+          <Property Name="SubClass3ID" Type="Int64" />
+          <Property Name="LinkID" Type="Int64" />
+          <Property Name="LinkDetails" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HasAdditionalDetails" Type="Boolean" Nullable="false" />
+          <Property Name="BusinessID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EDRMSReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityContextIRISObjectID" Type="Int64" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModified" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MigrationSourceID" Type="Int64" />
+          <Property Name="FINCustCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FINProjectCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsFINProjectCodeConfirmed" Type="Boolean" />
+          <Property Name="AllowMobileInspection" Type="Boolean" />
+          <Property Name="MobileInspectionStatus" Type="Int64" Nullable="false" />
+          <Property Name="MobileInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OnlineSelfServicesInstanceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AdHocData_IRISObject_IRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="1" />
+          <End Type="Domain.AdHocData" Role="AdHocData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdHocData">
+              <PropertyRef Name="IRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IRISObject_IRISObject_SecurityContextIRISObjectID">
+          <End Type="Domain.IRISObject" Role="IRISObject" Multiplicity="0..1" />
+          <End Type="Domain.IRISObject" Role="IRISObject1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IRISObject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IRISObject1">
+              <PropertyRef Name="SecurityContextIRISObjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DomainStoreContainer" CdmEntityContainer="IRISContext">
+          <EntitySetMapping Name="AdHocData">
+            <EntityTypeMapping TypeName="Domain.AdHocData">
+              <MappingFragment StoreEntitySet="AdHocData">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="OfficerResponsibleID" ColumnName="OfficerResponsibleID" />
+                <ScalarProperty Name="DatasetLocation" ColumnName="DatasetLocation" />
+                <ScalarProperty Name="DatasetDescription" ColumnName="DatasetDescription" />
+                <ScalarProperty Name="DatasetName" ColumnName="DatasetName" />
+                <ScalarProperty Name="IRISObjectID" ColumnName="IRISObjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Domain.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsSysAccount" ColumnName="IsSysAccount" />
+                <ScalarProperty Name="TimeCode" ColumnName="TimeCode" />
+                <ScalarProperty Name="Field4" ColumnName="Field4" />
+                <ScalarProperty Name="Field3" ColumnName="Field3" />
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IRISObject">
+            <EntityTypeMapping TypeName="Domain.IRISObject">
+              <MappingFragment StoreEntitySet="IRISObject">
+                <ScalarProperty Name="OnlineSelfServicesInstanceCode" ColumnName="OnlineSelfServicesInstanceCode" />
+                <ScalarProperty Name="MobileInspector" ColumnName="MobileInspector" />
+                <ScalarProperty Name="MobileInspectionStatus" ColumnName="MobileInspectionStatus" />
+                <ScalarProperty Name="AllowMobileInspection" ColumnName="AllowMobileInspection" />
+                <ScalarProperty Name="IsFINProjectCodeConfirmed" ColumnName="IsFINProjectCodeConfirmed" />
+                <ScalarProperty Name="FINProjectCode" ColumnName="FINProjectCode" />
+                <ScalarProperty Name="FINCustCode" ColumnName="FINCustCode" />
+                <ScalarProperty Name="MigrationSourceID" ColumnName="MigrationSourceID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SecurityContextIRISObjectID" ColumnName="SecurityContextIRISObjectID" />
+                <ScalarProperty Name="EDRMSReference" ColumnName="EDRMSReference" />
+                <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+                <ScalarProperty Name="HasAdditionalDetails" ColumnName="HasAdditionalDetails" />
+                <ScalarProperty Name="LinkDetails" ColumnName="LinkDetails" />
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="SubClass3ID" ColumnName="SubClass3ID" />
+                <ScalarProperty Name="SubClass2ID" ColumnName="SubClass2ID" />
+                <ScalarProperty Name="SubClass1ID" ColumnName="SubClass1ID" />
+                <ScalarProperty Name="ObjectTypeID" ColumnName="ObjectTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="False" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="Model1" ZoomLevel="76">
+        <edmx:AssociationConnector Association="Domain.FK_Task_IRISObject">
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="12.028219401041666" />
+          <edmx:ConnectorPoint PointX="10.158205390625001" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.510416666666666" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="10.677083333333334" PointY="32.353098958333334" />
+          <edmx:ConnectorPoint PointX="14.75" PointY="32.353098958333334" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Domain.FK_Address_ReferenceDataValue">
+          <edmx:ConnectorPoint PointX="29.5" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="14.592316423588546" />
+          <edmx:ConnectorPoint PointX="24.1875" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="24.145833333333332" PointY="12.437499999999998" />
+          <edmx:ConnectorPoint PointX="23.854166666666668" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.27669421223958" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="18.110027545572915" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="12.4375" />
+          <edmx:ConnectorPoint PointX="17.440428439453125" PointY="8.4996956380208335" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.AdHocData" Width="1.5" PointX="3" PointY="1.25" Height="3.7109993489583331" />
+        <edmx:EntityTypeShape EntityType="Domain.User" Width="1.5" PointX="5.75" PointY="1.375" Height="2.7494921874999996" />
+        <edmx:AssociationConnector Association="Domain.FK_AdHocData_User_OfficerResponsibleID">
+          <edmx:ConnectorPoint PointX="2.25" PointY="7.37474609375" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="7.37474609375" />
+          <edmx:ConnectorPoint PointX="3.75" PointY="4.9609993489583335" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="Domain.IRISObject" Width="1.5" PointX="0.5" PointY="1.125" />
+        <edmx:AssociationConnector Association="Domain.FK_AdHocData_IRISObject_IRISObjectID" />
+        <edmx:AssociationConnector Association="Domain.FK_IRISObject_IRISObject_SecurityContextIRISObjectID" />
+        </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

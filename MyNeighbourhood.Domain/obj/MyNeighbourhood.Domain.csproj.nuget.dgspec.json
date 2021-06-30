@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {}
+    "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {
+    "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj",
         "projectName": "MyNeighbourhood.Domain",
-        "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj",
+        "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj",
         "packagesPath": "C:\\Users\\priyank.kothari\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\obj\\",
+        "outputPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1yvRp1AccqtjwnrcIebD6hggkZrK+WkUtqALtewE8jQpcNOo644dk5YG1qJptLZYIRLI+Sa9JxsiTfMWz0gLoQ==",
+  "dgSpecHash": "oEzTpps4bpCeYNkvjbGzhNBxhLiEhZqzGQ5Qxc3N7NJLyFRhlPS4wKYMgJtwQti91KPOAiUhiHQjw3AcGNHTaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
+  "projectFilePath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\priyank.kothari\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\priyank.kothari\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

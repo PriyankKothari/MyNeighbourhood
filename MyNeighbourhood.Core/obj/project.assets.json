@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj",
+      "projectUniqueName": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj",
       "projectName": "MyNeighbourhood.Core",
-      "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj",
+      "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj",
       "packagesPath": "C:\\Users\\priyank.kothari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Core\\obj\\",
+      "outputPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

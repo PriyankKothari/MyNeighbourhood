@@ -6087,11 +6087,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Test\\MyNeighbourhood.Test.csproj",
+      "projectUniqueName": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Test\\MyNeighbourhood.Test.csproj",
       "projectName": "MyNeighbourhood.Test",
-      "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Test\\MyNeighbourhood.Test.csproj",
+      "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Test\\MyNeighbourhood.Test.csproj",
       "packagesPath": "C:\\Users\\priyank.kothari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Test\\obj\\",
+      "outputPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

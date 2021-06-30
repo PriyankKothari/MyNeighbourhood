@@ -2423,11 +2423,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
+      "projectUniqueName": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
       "projectName": "MyNeighbourhood.API",
-      "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
+      "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood\\MyNeighbourhood.API.csproj",
       "packagesPath": "C:\\Users\\priyank.kothari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood\\obj\\",
+      "outputPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2447,8 +2447,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj": {
-              "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj"
+            "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj": {
+              "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj"
             }
           }
         }

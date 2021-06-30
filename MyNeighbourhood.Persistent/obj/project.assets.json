@@ -1804,11 +1804,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj",
+      "projectUniqueName": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj",
       "projectName": "MyNeighbourhood.Persistent",
-      "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj",
+      "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Persistent\\MyNeighbourhood.Persistent.csproj",
       "packagesPath": "C:\\Users\\priyank.kothari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Persistent\\obj\\",
+      "outputPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Persistent\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1828,11 +1828,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj": {
-              "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj"
+            "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj": {
+              "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Core\\MyNeighbourhood.Core.csproj"
             },
-            "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {
-              "projectPath": "C:\\Users\\priyank.kothari\\Source\\Repos\\PriyankKothari\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj"
+            "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj": {
+              "projectPath": "C:\\Users\\priyank.kothari\\source\\repos\\MyNeighbourhood.Domain\\MyNeighbourhood.Domain.csproj"
             }
           }
         }

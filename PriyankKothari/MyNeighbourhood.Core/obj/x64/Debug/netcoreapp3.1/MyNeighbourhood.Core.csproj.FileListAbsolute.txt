@@ -1,9 +1,0 @@
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.deps.json
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.dll
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\bin\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.pdb
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.csprojAssemblyReference.cache
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.AssemblyInfoInputs.cache
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.AssemblyInfo.cs
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.csproj.CoreCompileInputs.cache
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.dll
-C:\Users\priyank.kothari\source\repos\MyNeighbourhood.Core\obj\x64\Debug\netcoreapp3.1\MyNeighbourhood.Core.pdb
